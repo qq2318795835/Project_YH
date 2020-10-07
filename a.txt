@@ -1,0 +1,907 @@
+<template>
+    <el-container class="container">
+      <el-header class="header" height="70px">
+          <el-container class="container1">
+            <div class="log1">
+
+            </div>
+            <el-menu
+              :default-active="activeIndex2"
+              class="el-menu-demo"
+              mode="horizontal"
+              @select="handleSelect"
+              background-color="#545c64"
+              text-color="#dadbdc"
+              active-text-color="#ffd04b">
+              <el-menu-item index="1">首页</el-menu-item>
+              <el-menu-item index="2">职位</el-menu-item>
+              <el-submenu index="3">
+                <template slot="title">校园</template>
+                <el-menu-item index="3-1">选项</el-menu-item>
+                <el-menu-item index="3-2">选项2</el-menu-item>
+                <el-menu-item index="3-3">选项3</el-menu-item>
+                <el-menu-item index="3-3">选项3</el-menu-item>
+              </el-submenu>
+              <el-menu-item index="4" >公司</el-menu-item>
+              <el-menu-item index="5"><a href="https://www.ele.me" target="_blank">资讯</a></el-menu-item>
+              <el-menu-item index="6">APP</el-menu-item>
+              <el-menu-item class="el-menu-item2" index="7">上传简历</el-menu-item>
+              <el-menu-item index="8">我要找工作</el-menu-item>
+              <el-menu-item index="9">我要招聘</el-menu-item>
+              <el-button class="button1" type="success" size="small" round>注册</el-button>
+              <el-button class="button1" type="success" size="small" round>登录</el-button>
+            </el-menu>
+          </el-container>
+      </el-header>
+
+      <el-main class="main">
+        <el-col>
+          <el-card shadow="hover" class="card1">
+            <el-menu class="menu2"
+                     :default-active="activeIndex2"
+                     mode="horizontal"
+                     @select="handleSelect"
+                     background-color="#fff">
+              <el-submenu index="1" class="menu2-item0">
+                <template slot="title" class="menu2-item">职位类型</template>
+                <el-menu-item index="1-1">选项1</el-menu-item>
+                <el-menu-item index="1-2">选项2</el-menu-item>
+                <el-menu-item index="1-3">选项3</el-menu-item>
+                <el-menu-item index="1-3">选项3</el-menu-item>
+              </el-submenu>
+            </el-menu>
+
+          </el-card>
+          <el-button type="info" plain="true" class="button2">搜索</el-button>
+          <span class="el-icon-search"></span>
+          <input type="text" class="search" placeholder="" />
+        </el-col>
+        <div>
+          <ul class="small-line">
+            <li class="small-line1">热门职位:</li>
+            <li class="small-line1">销售专员</li>
+            <li class="small-line1">室内设计</li>
+            <li class="small-line1">服务员</li>
+            <li class="small-line1">硬件工程师</li>
+            <li class="small-line1">售前客服</li>
+            <li class="small-line1">网络销售 </li>
+            <li class="small-line1">物流跟单</li>
+            <li class="small-line1">物流</li>
+            <li class="small-line1">知识产权律师</li>
+          </ul>
+        </div>
+        <el-container class="main2">
+          <el-card class="box-card1">
+            <div class="card-line">
+              <div class="card-line1">
+                <span>
+                  <ul class="card-line-type">
+                    <li class="card-line-type1">技术</li>
+                    <li class="card-line-type2">Java</li>
+                    <li class="card-line-type2">PHP</li>
+                    <li class="card-line-type3">web前端</li>
+                    <li class="card-line-type3">算法工程师</li>
+                    <li class="card-line-type4">
+                      <span class="el-icon-arrow-right"></span>
+                    </li>
+                  </ul>
+                </span>
+                <div class="line-h">
+                  <div class="line-hc">
+                    <el-card>
+                      区域区域区域区域区域区域区域区域区域区域区域区域
+                    </el-card>
+                  </div>
+                </div>
+              </div>
+              <div class="card-line1">
+                <span>
+
+                  <ul class="card-line-type">
+                    <li class="card-line-type1">产品</li>
+                    <li class="card-line-type2">经理</li>
+                    <li class="card-line-type2">总监</li>
+                    <li class="card-line-type3">数据分析经理</li>
+                    <li class="card-line-type3">待定</li>
+                    <li class="card-line-type4">
+                      <span class="el-icon-arrow-right"></span>
+                    </li>
+                  </ul>
+                </span>
+              </div>
+              <div class="card-line1">
+                <span>
+                  <ul class="card-line-type">
+                    <li class="card-line-type1">设计</li>
+                    <li class="card-line-type2">UI设计</li>
+                    <li class="card-line-type2">平面设计</li>
+                    <li class="card-line-type3">交互设计师</li>
+                    <li class="card-line-type3">待定</li>
+                    <li class="card-line-type4">
+                      <span class="el-icon-arrow-right"></span>
+                    </li>
+                  </ul></span>
+              </div>
+              <div class="card-line1">
+              <span>
+                  <ul class="card-line-type">
+                    <li class="card-line-type1">运营</li>
+                    <li class="card-line-type2">产品运营</li>
+                    <li class="card-line-type2">网络推广</li>
+                    <li class="card-line-type3">新媒体运营</li>
+                    <li class="card-line-type3">待定</li>
+                    <li class="card-line-type4">
+                      <span class="el-icon-arrow-right"></span>
+                    </li>
+                  </ul></span>
+            </div>
+              <div class="card-line1">
+                <span>
+                  <ul class="card-line-type">
+                    <li class="card-line-type1">市场</li>
+                    <li class="card-line-type2">市场营销</li>
+                    <li class="card-line-type2">市场推广</li>
+                    <li class="card-line-type3">品牌公关</li>
+                    <li class="card-line-type3">策划经理</li>
+                    <li class="card-line-type4">
+                      <span class="el-icon-arrow-right"></span>
+                    </li>
+                  </ul></span>
+              </div>
+              <div class="card-line1">
+                <span>
+                  <ul class="card-line-type">
+                    <li class="card-line-type1">人事</li>
+                    <li class="card-line-type2">行政主管</li>
+                    <li class="card-line-type2">待定</li>
+                    <li class="card-line-type3">人力资源专员</li>
+                    <li class="card-line-type3">待定</li>
+                    <li class="card-line-type4">
+                      <span class="el-icon-arrow-right"></span>
+                    </li>
+                  </ul>
+                </span>
+              </div>
+              <div class="card-line1">
+                <span>
+                  <ul class="card-line-type">
+                    <li class="card-line-type1">高管</li>
+                    <li class="card-line-type2">CEO</li>
+                    <li class="card-line-type2">CTO</li>
+                    <li class="card-line-type3">分公司负责人</li>
+                    <li class="card-line-type3">待定</li>
+                    <li class="card-line-type4">
+                 <span class="el-icon-arrow-right"></span>
+                    </li>
+                  </ul>
+                </span>
+              </div>
+              <div class="card-line2">
+                <div>
+                  <li class="card-line-type-s">
+                  更多职位
+                  </li>
+                  <li  class="card-line-type-s1">
+                  <span class="el-icon-circle-plus-outline"></span>
+                  </li>
+                </div>
+              </div>
+            </div>
+          </el-card>
+
+          <div class="box-card2">
+            <img src="../image/fj1.jpg" height="226" width="522"/>
+          </div>
+          <div class="box-card3">
+            <img src="../image/fj2.jpg" height="226" width="260"/>
+          </div>
+          <div class="box-card4">
+            <img src="../image/fj3.jpg" height="112" width="522"/>
+          </div>
+          <div class="box-card5">
+            <img src="../image/fj4.jpg" height="112" width="260"/>
+          </div>
+        </el-container>
+        <el-container class="main3">
+        <div class="line-f">
+          <p class="txt1">热招职位</p>
+        </div>
+        </el-container>
+        <el-card class="job-line">
+          <ul class="j-line">
+            <li class="j-line-1">IT·互联网</li>
+            <li class="j-line-1">金融</li>
+            <li class="j-line-1">房地产·建筑</li>
+            <li class="j-line-1">教育培训</li>
+            <li class="j-line-1">娱乐传媒</li>
+            <li class="j-line-1">医疗健康</li>
+            <li class="j-line-1">法律咨询</li>
+            <li class="j-line-1">供应链·物流</li>
+            <li class="j-line-1">采购贸易</li>
+          </ul>
+        </el-card>
+        <el-container class="main4">
+          <div class="m4-body-1">
+            <el-card class="m4-card1">
+              <div class="m4-card1-con">
+                <div class="m4-card1-con1">
+                  <div class="m4-card1-con1-1">
+                    合成工艺主管/组长
+                  </div>
+                  <div class="m4-card1-con1-2">
+                    18-25K·14薪
+                  </div>
+                </div>
+                <div class="m4-card1-con2">
+                  <div class="m4-card1-con2-1">
+                    天津
+                    <span class="m4-card1-con2-1-v"></span>
+                    一年以内
+                    <span class="m4-card1-con2-1-v"></span>
+                    博士
+                  </div>
+                </div>
+              </div>
+              <hr/>
+              <div class="m4-card1-con-B">
+                <div class="m4-card1-con-B-1">
+                  <img src="../image/gs1.jpg">
+                </div>
+                <div class="m4-card1-con-B-2">
+                  凯莱英医药集团
+                </div>
+                <div class="m4-card1-con-B-3">
+                  其他行业
+                  <span class="m4-card1-con2-1-v"></span>
+                  已上市
+                </div>
+              </div>
+            </el-card>
+            <el-card class="m4-card1">
+              <div class="m4-card1-con">
+                <div class="m4-card1-con1">
+                  <div class="m4-card1-con1-1">
+                    合成工艺主管/组长
+                  </div>
+                  <div class="m4-card1-con1-2">
+                    18-25K·14薪
+                  </div>
+                </div>
+                <div class="m4-card1-con2">
+                  <div class="m4-card1-con2-1">
+                    天津
+                    <span class="m4-card1-con2-1-v"></span>
+                    一年以内
+                    <span class="m4-card1-con2-1-v"></span>
+                    博士
+                  </div>
+                </div>
+              </div>
+              <hr/>
+              <div class="m4-card1-con-B">
+                <div class="m4-card1-con-B-1">
+                  <img src="../image/gs1.jpg">
+                </div>
+                <div class="m4-card1-con-B-2">
+                  凯莱英医药集团
+                </div>
+                <div class="m4-card1-con-B-3">
+                  其他行业
+                  <span class="m4-card1-con2-1-v"></span>
+                  已上市
+                </div>
+              </div>
+            </el-card>
+            <el-card class="m4-card1">
+              <div class="m4-card1-con">
+                <div class="m4-card1-con1">
+                  <div class="m4-card1-con1-1">
+                    合成工艺主管/组长
+                  </div>
+                  <div class="m4-card1-con1-2">
+                    18-25K·14薪
+                  </div>
+                </div>
+                <div class="m4-card1-con2">
+                  <div class="m4-card1-con2-1">
+                    天津
+                    <span class="m4-card1-con2-1-v"></span>
+                    一年以内
+                    <span class="m4-card1-con2-1-v"></span>
+                    博士
+                  </div>
+                </div>
+              </div>
+              <hr/>
+              <div class="m4-card1-con-B">
+                <div class="m4-card1-con-B-1">
+                  <img src="../image/gs1.jpg">
+                </div>
+                <div class="m4-card1-con-B-2">
+                  凯莱英医药集团
+                </div>
+                <div class="m4-card1-con-B-3">
+                  其他行业
+                  <span class="m4-card1-con2-1-v"></span>
+                  已上市
+                </div>
+              </div>
+            </el-card>
+            <el-card class="m4-card1">
+              <div class="m4-card1-con">
+                <div class="m4-card1-con1">
+                  <div class="m4-card1-con1-1">
+                    合成工艺主管/组长
+                  </div>
+                  <div class="m4-card1-con1-2">
+                    18-25K·14薪
+                  </div>
+                </div>
+                <div class="m4-card1-con2">
+                  <div class="m4-card1-con2-1">
+                    天津
+                    <span class="m4-card1-con2-1-v"></span>
+                    一年以内
+                    <span class="m4-card1-con2-1-v"></span>
+                    博士
+                  </div>
+                </div>
+              </div>
+              <hr/>
+              <div class="m4-card1-con-B">
+                <div class="m4-card1-con-B-1">
+                  <img src="../image/gs1.jpg">
+                </div>
+                <div class="m4-card1-con-B-2">
+                  凯莱英医药集团
+                </div>
+                <div class="m4-card1-con-B-3">
+                  其他行业
+                  <span class="m4-card1-con2-1-v"></span>
+                  已上市
+                </div>
+              </div>
+            </el-card>
+            <el-card class="m4-card1">
+              <div class="m4-card1-con">
+                <div class="m4-card1-con1">
+                  <div class="m4-card1-con1-1">
+                    合成工艺主管/组长
+                  </div>
+                  <div class="m4-card1-con1-2">
+                    18-25K·14薪
+                  </div>
+                </div>
+                <div class="m4-card1-con2">
+                  <div class="m4-card1-con2-1">
+                    天津
+                    <span class="m4-card1-con2-1-v"></span>
+                    一年以内
+                    <span class="m4-card1-con2-1-v"></span>
+                    博士
+                  </div>
+                </div>
+              </div>
+              <hr/>
+              <div class="m4-card1-con-B">
+                <div class="m4-card1-con-B-1">
+                  <img src="../image/gs1.jpg">
+                </div>
+                <div class="m4-card1-con-B-2">
+                  凯莱英医药集团
+                </div>
+                <div class="m4-card1-con-B-3">
+                  其他行业
+                  <span class="m4-card1-con2-1-v"></span>
+                  已上市
+                </div>
+              </div>
+            </el-card>
+            <el-card class="m4-card1">
+              <div class="m4-card1-con">
+                <div class="m4-card1-con1">
+                  <div class="m4-card1-con1-1">
+                    合成工艺主管/组长
+                  </div>
+                  <div class="m4-card1-con1-2">
+                    18-25K·14薪
+                  </div>
+                </div>
+                <div class="m4-card1-con2">
+                  <div class="m4-card1-con2-1">
+                    天津
+                    <span class="m4-card1-con2-1-v"></span>
+                    一年以内
+                    <span class="m4-card1-con2-1-v"></span>
+                    博士
+                  </div>
+                </div>
+              </div>
+              <hr/>
+              <div class="m4-card1-con-B">
+                <div class="m4-card1-con-B-1">
+                  <img src="../image/gs1.jpg">
+                </div>
+                <div class="m4-card1-con-B-2">
+                  凯莱英医药集团
+                </div>
+                <div class="m4-card1-con-B-3">
+                  其他行业
+                  <span class="m4-card1-con2-1-v"></span>
+                  已上市
+                </div>
+              </div>
+            </el-card>
+            <el-card class="m4-card1">
+              <div class="m4-card1-con">
+                <div class="m4-card1-con1">
+                  <div class="m4-card1-con1-1">
+                    合成工艺主管/组长
+                  </div>
+                  <div class="m4-card1-con1-2">
+                    18-25K·14薪
+                  </div>
+                </div>
+                <div class="m4-card1-con2">
+                  <div class="m4-card1-con2-1">
+                    天津
+                    <span class="m4-card1-con2-1-v"></span>
+                    一年以内
+                    <span class="m4-card1-con2-1-v"></span>
+                    博士
+                  </div>
+                </div>
+              </div>
+              <hr/>
+              <div class="m4-card1-con-B">
+                <div class="m4-card1-con-B-1">
+                  <img src="../image/gs1.jpg">
+                </div>
+                <div class="m4-card1-con-B-2">
+                  凯莱英医药集团
+                </div>
+                <div class="m4-card1-con-B-3">
+                  其他行业
+                  <span class="m4-card1-con2-1-v"></span>
+                  已上市
+                </div>
+              </div>
+            </el-card>
+            <el-card class="m4-card1">
+              <div class="m4-card1-con">
+                <div class="m4-card1-con1">
+                  <div class="m4-card1-con1-1">
+                    合成工艺主管/组长
+                  </div>
+                  <div class="m4-card1-con1-2">
+                    18-25K·14薪
+                  </div>
+                </div>
+                <div class="m4-card1-con2">
+                  <div class="m4-card1-con2-1">
+                    天津
+                    <span class="m4-card1-con2-1-v"></span>
+                    一年以内
+                    <span class="m4-card1-con2-1-v"></span>
+                    博士
+                  </div>
+                </div>
+              </div>
+              <hr/>
+              <div class="m4-card1-con-B">
+                <div class="m4-card1-con-B-1">
+                  <img src="../image/gs1.jpg">
+                </div>
+                <div class="m4-card1-con-B-2">
+                  凯莱英医药集团
+                </div>
+                <div class="m4-card1-con-B-3">
+                  其他行业
+                  <span class="m4-card1-con2-1-v"></span>
+                  已上市
+                </div>
+              </div>
+            </el-card>
+            <el-card class="m4-card1">
+              <div class="m4-card1-con">
+                <div class="m4-card1-con1">
+                  <div class="m4-card1-con1-1">
+                    合成工艺主管/组长
+                  </div>
+                  <div class="m4-card1-con1-2">
+                    18-25K·14薪
+                  </div>
+                </div>
+                <div class="m4-card1-con2">
+                  <div class="m4-card1-con2-1">
+                    天津
+                    <span class="m4-card1-con2-1-v"></span>
+                    一年以内
+                    <span class="m4-card1-con2-1-v"></span>
+                    博士
+                  </div>
+                </div>
+              </div>
+              <hr/>
+              <div class="m4-card1-con-B">
+                <div class="m4-card1-con-B-1">
+                  <img src="../image/gs1.jpg">
+                </div>
+                <div class="m4-card1-con-B-2">
+                  凯莱英医药集团
+                </div>
+                <div class="m4-card1-con-B-3">
+                  其他行业
+                  <span class="m4-card1-con2-1-v"></span>
+                  已上市
+                </div>
+              </div>
+            </el-card>
+          </div>
+        </el-container>
+      </el-main>
+    </el-container>
+
+</template>
+
+<script>
+
+</script>
+
+<style scoped>
+@import "../css/index.css";
+
+</style>
+
+
+
+
+
+
+CSS/
+
+/deep/ .container1{
+  height: 65px;
+  position: relative;
+  margin: 0px auto;
+}
+/deep/ .header {
+  background-color: #545c64;
+  color: #333;
+  margin-top: -8px;
+  margin-left: -8px;
+  margin-right: -8px;
+}
+/deep/ .el-menu-demo{
+  margin-left: 250px;
+  padding-top: 5px;
+  border: none;
+}
+.el-menu-item2{
+  margin-left: 250px;
+
+}
+.el-submenu{
+
+}
+
+/deep/ .main {
+  background-color: #f6f6f8;
+  color: #333;
+  margin-left: -8px;
+  margin-right: -8px;
+  text-align: center;
+  width: auto;
+}
+.button1 {
+  background-color: #545c64;
+  margin-top: 13px;
+  margin-left: 20px;
+  border-color: #f1c74e;
+}
+.button1 :hover{
+  color: #f1c74e;
+}
+/deep/ .el-col{
+  width: 1000px;
+  height: auto;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  margin-top: 80px;
+}
+.card1{
+  height: 50px;
+  width: 795px;
+  border-radius: 0px;
+
+}
+.button2{
+  height: 49px;
+  float: right;
+  width: 100px;
+  margin-right: 73px;
+  margin-top: -50px;
+  width: 130px;
+  border-radius: 0px;
+}
+.menu2{
+  width: 130px;
+  margin-top: -24px;
+  border: none;
+}
+.el-icon-search{
+  position: relative;
+  margin-left: 160px;
+  margin-top: -35px;
+  float: left;
+  font-size: 22px;
+}
+ .search{
+    height: 40px;
+   float: right;
+   margin-top: -50px;
+    margin-right: 300px;
+    width: 500px;
+     border: none;
+     outline:none;
+     font-size: 18px;
+   padding-top: 5px;
+}
+ .small-line{
+   width: 850px;
+   height: 30px;
+   list-style: none;
+   height: auto;
+   position: relative;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   margin-top: 130px;
+   margin-left: -130px;
+ }
+.small-line1{
+  width: 100px;
+  font-size: 13px;
+  display: inline;
+  margin-left: 20px;
+}
+.main2{
+  /*border: 1px solid red;*/
+  width: 1184px;
+  margin: 0px auto;
+}
+.box-card1{
+  height: 340px;
+  width: 380px;
+}
+.card-line{
+  margin-left: -21px;
+  margin-top: -35px;
+}
+.card-line1{
+  margin-top: -15px;
+  height: 42px;
+  width: 380px;
+}
+.card-line2{
+  list-style: none;
+  height: 40px;
+  width: 380px;
+}
+.card-line-type-s{
+
+  width: 70px;
+  margin-left: 120px;
+  padding-top: 10px;
+}
+.card-line-type-s1{
+  width: 30px;
+  float: right;
+  margin-top: -21px;
+  margin-right: 155px;
+}
+.card-line :hover{
+  background-color: #eec44e;
+}
+.line-h{
+  display:none;
+}
+.card-line1:hover .line-h{
+  display:block; /* 以块显示 */
+  width:auto; /* 宽度 */
+  background-color:#EFEFEF; /* 定义背景色 */
+  margin-left: 380px;
+  margin-top: -30px;
+  position: absolute;
+}
+.card-line-type{
+  height: 42px;
+  list-style: none;
+  clear: both;
+}
+.card-line-type1{
+  width: 50px;
+  margin-left: -35px;
+  margin-top: 10px;
+  float: left;
+}
+.card-line-type2{
+  width: 50px;
+  float: left;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-top: 15px;
+}
+.card-line-type3{
+  width: 80px;
+  float: left;
+  padding-right: 5px;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-top: 15px;
+}
+.card-line-type4{
+  width: 30px;
+  margin-right: 5px;
+  float: right;
+  margin-top: 10px;
+}
+.box-card2{
+
+  width: 524px;
+  height: 228px;
+}
+.box-card3{
+
+  width: 262px;
+  height: 228px;
+
+}
+.box-card4{
+
+  width: 524px;
+  height: 113px;
+  margin-top: 228px;
+  margin-left: -786px;
+}
+.box-card5{
+
+  width: 262px;
+  height: 113px;
+  margin-top: 228px;
+}
+.main3{
+  /*border: 1px solid red;*/
+  width: 1184px;
+  margin: 0px auto;
+}
+.line-f{
+  margin: 0px auto;
+  font-size: 26px;
+}
+.line-f :before{
+  content: '';
+  display: inline-block;
+  vertical-align: 8px;
+  margin: 0 10px;
+  width: 60px;
+  height: 1px;
+  background: #d1d4db;
+}
+.line-f :after{
+  content: '';
+  display: inline-block;
+  vertical-align: 8px;
+  margin: 0 10px;
+  width: 60px;
+  height: 1px;
+  background: #d1d4db;
+}
+.job-line{
+  /*border: 1px solid red;*/
+  width: 1182px;
+  margin: 0px auto;
+}
+.j-line{
+  list-style: none;
+  height: 50px;
+  clear: both;
+  margin-top: -20px;
+  margin-bottom: -21px;
+}
+.j-line-1{
+  /*border: 1px solid red;*/
+  color: #8d92a1;
+  float: left;
+  margin-top: 15px;
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-bottom: 12px;
+}
+.j-line :hover{
+  border-bottom: 3px solid #5dd5c8;
+  color: #5dd5c8;
+}
+.main4{
+  width: 1184px;
+  margin: 0px auto;
+}
+.m4-body-1{
+  /*border: 1px solid red;*/
+  clear: both;
+  margin-top: 10px;
+}
+.m4-card1{
+  width: 380px;
+  height: 150px;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-bottom: 10px;
+  float: left;
+}
+.m4-card1-con{
+
+}
+.m4-card1-con1{
+
+}
+.m4-card1-con1-1{
+  width: 150px;
+  text-align: left;
+}
+.m4-card1-con1-2{
+  font-size: 14px;
+  width: 100px;
+  margin-left: 235px;
+  margin-top: -23px;
+  text-align: right;
+  color: red;
+}
+.m4-card1-con2{
+  margin-top: 10px;
+}
+.m4-card1-con2-1{
+  width: 200px;
+  font-size: 14px;
+  color: #8d92a1;
+  text-align: left;
+}
+.m4-card1-con2-1-v{
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  vertical-align: middle;
+  background: #8d92a1;
+  margin: 0 10px;
+}
+.m4-card1-con-B{
+  height: 45px;
+}
+.m4-card1-con-B-1{
+  height: 33px;
+  width: 33px;
+  margin-top: 6px;
+}
+.m4-card1-con-B-2{
+  width: 120px;
+  margin-top: -28px;
+  margin-left: 50px;
+}
+.m4-card1-con-B-3{
+  width: 130px;
+  margin-top: -21px;
+  margin-left: 200px;
+  font-size: 14px;
+  color: #8d92a1;
+}
+
+
+
+ssh-keygen -t rsa
+
+$ ssh-keygen -t rsa  -C  "your email@.com"
+
+
+//git密匙储存位置
+/c/Users/Administrator/.ssh 
