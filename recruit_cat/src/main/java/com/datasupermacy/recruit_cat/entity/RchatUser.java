@@ -8,6 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "rchat_user", schema = "recruit_cat", catalog = "")
 public class RchatUser implements Serializable {
+    private static final long serialVersionUID = -1500325645361023316L;
     private Integer Rid;
     private Integer Rjoin_id;
     private Double Rsend_count;

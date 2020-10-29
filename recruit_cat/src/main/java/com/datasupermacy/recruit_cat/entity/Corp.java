@@ -6,12 +6,13 @@ import java.util.Objects;
 
 @Entity
 public class Corp implements Serializable {
+    private static final long serialVersionUID = -6659177334478928446L;
     private Integer Cid;
     private String Cname;
     private String Cpass;
     private String Cphone;
     private String Cemail;
-    private Integer Jid;
+    private String Jid;
     private String Jname;
     private String Caddress;
     private String Cdescribe;
@@ -48,7 +49,7 @@ public class Corp implements Serializable {
     }
 
     @Basic
-    @Column(name = "cphone", nullable = false, length = 255)
+    @Column(name = "cphone", nullable = true, length = 255)
     public String getCphone() {
         return Cphone;
     }
@@ -68,17 +69,18 @@ public class Corp implements Serializable {
     }
 
     @Basic
-    @Column(name = "jid", nullable = true)
-    public Integer getJid() {
+
+    @Column(name = "jid", nullable = true,columnDefinition = "TEXT")
+    public String getJid() {
         return Jid;
     }
 
-    public void setJid(Integer jid) {
+    public void setJid(String jid) {
         Jid = jid;
     }
 
     @Basic
-    @Column(name = "jname", nullable = true, length = 255)
+    @Column(name = "jname", nullable = true,columnDefinition = "TEXT")
     public String getJname() {
         return Jname;
     }

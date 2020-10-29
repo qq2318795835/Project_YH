@@ -6,8 +6,9 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "post_list", schema = "recruit_cat", catalog = "")
+@Table(name = "post_list", schema = "recruit_cat")
 public class PostList implements Serializable {
+    private static final long serialVersionUID = -4712470616372963531L;
     private Integer Pid;
     private Integer Cid;
     private Integer Jid;

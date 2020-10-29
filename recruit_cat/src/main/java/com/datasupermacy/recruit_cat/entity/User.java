@@ -1,13 +1,11 @@
 package com.datasupermacy.recruit_cat.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@IdClass(UserPK.class)
-public class User implements Serializable {
+public class User {
     private Integer Uid;
     private String Uname;
     private String Ugender;
@@ -16,9 +14,9 @@ public class User implements Serializable {
     private String Upass;
     private Date Ubirth;
     private String Uidentify;
-    private String UjobS_status;
+    private String UjobStatus;
     private String Uexperience;
-    private String Uqualifications;
+    private String uqualifications;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +30,7 @@ public class User implements Serializable {
     }
 
     @Basic
-    @Column(name = "uname", nullable = false, length = 255)
+    @Column(name = "uname", nullable = true, length = 255)
     public String getUname() {
         return Uname;
     }
@@ -51,8 +49,8 @@ public class User implements Serializable {
         Ugender = ugender;
     }
 
-    @Id
-    @Column(name = "uphone", nullable = false, length = 255)
+    @Basic
+    @Column(name = "uphone", nullable = true, length = 255)
     public String getUphone() {
         return Uphone;
     }
@@ -62,7 +60,7 @@ public class User implements Serializable {
     }
 
     @Basic
-    @Column(name = "uemail", nullable = false, length = 255)
+    @Column(name = "uemail", nullable = true, length = 255)
     public String getUemail() {
         return Uemail;
     }
@@ -103,12 +101,12 @@ public class User implements Serializable {
 
     @Basic
     @Column(name = "ujob_status", nullable = true, length = 255)
-    public String getUjobS_status() {
-        return UjobS_status;
+    public String getUjobStatus() {
+        return UjobStatus;
     }
 
-    public void setUjobS_status(String ujobS_status) {
-        UjobS_status = ujobS_status;
+    public void setUjobStatus(String ujobStatus) {
+        UjobStatus = ujobStatus;
     }
 
     @Basic
@@ -124,11 +122,11 @@ public class User implements Serializable {
     @Basic
     @Column(name = "uqualifications", nullable = true, length = 255)
     public String getUqualifications() {
-        return Uqualifications;
+        return uqualifications;
     }
 
     public void setUqualifications(String uqualifications) {
-        Uqualifications = uqualifications;
+        this.uqualifications = uqualifications;
     }
 
     @Override
@@ -144,13 +142,13 @@ public class User implements Serializable {
                 Objects.equals(Upass, user.Upass) &&
                 Objects.equals(Ubirth, user.Ubirth) &&
                 Objects.equals(Uidentify, user.Uidentify) &&
-                Objects.equals(UjobS_status, user.UjobS_status) &&
+                Objects.equals(UjobStatus, user.UjobStatus) &&
                 Objects.equals(Uexperience, user.Uexperience) &&
-                Objects.equals(Uqualifications, user.Uqualifications);
+                Objects.equals(uqualifications, user.uqualifications);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Uid, Uname, Ugender, Uphone, Uemail, Upass, Ubirth, Uidentify, UjobS_status, Uexperience, Uqualifications);
+        return Objects.hash(Uid, Uname, Ugender, Uphone, Uemail, Upass, Ubirth, Uidentify, UjobStatus, Uexperience, uqualifications);
     }
 }

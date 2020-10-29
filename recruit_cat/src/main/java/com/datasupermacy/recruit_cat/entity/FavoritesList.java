@@ -6,8 +6,9 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "favorites_list", schema = "recruit_cat", catalog = "")
+@Table(name = "favorites_list", schema = "recruit_cat")
 public class FavoritesList implements Serializable {
+    private static final long serialVersionUID = -6993832736314154609L;
     private Integer Fid;
     private Integer Uid;
     private Integer Jid;
