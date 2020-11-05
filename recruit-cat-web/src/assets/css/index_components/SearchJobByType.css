@@ -1,0 +1,102 @@
+.small-body{
+  border: 1px solid red;
+  width: 900px;
+  margin: 0px auto;
+}
+.small-line{
+  text-decoration: none;
+  margin-right: 14px;
+  color: rgb(255, 208, 75);
+}
+.main2{
+  border: 1px solid red;
+  width: 1184px;
+  margin: 0px auto;
+  margin-top: 40px;
+}
+.box-card1{
+  height: 345px;
+  width: 380px;
+}
+.card-line{
+  margin-top: -20px;
+  margin-left: -20px;
+  width: 380px;
+
+}
+.card-line1{
+  clear: both;
+  height: 43px;
+  overflow: hidden;
+}
+.card-line :hover{
+  background-color: #ccced0;
+}
+.card-line-type{
+  margin-top: 10px;
+  margin-left: 20px;
+  width: 50px;
+  float: left;
+}
+.card-line-type1{
+  width: 298px;
+  margin-left: 80px;
+  margin-top: 10px;
+
+}
+.card-line-type1-s{
+  margin-right: 15px;
+  font-size: 14px;
+}
+.card-line-type1-1{
+  color: #f1c74e;
+  text-decoration: none;
+}
+.card-line2{
+  height: 44px;
+  clear: both;
+  overflow: hidden;
+}
+.card-line-type-s{
+  list-style: none;
+  width: 80px;
+  margin-top: 12px;
+  margin-left: 120px;
+  text-align: right;
+}
+.card-line-type-s1{
+
+  list-style: none;
+  width: 30px;
+  margin-top: -20px;
+  margin-left: 200px;
+  text-align: center;
+}
+.card-line-type-a{
+  text-decoration: none;
+  color: black;
+}
+.box-card2{
+  /*border: 1px solid red;*/
+  width: 524px;
+  height: 228px;
+}
+.box-card3{
+  /*border: 1px solid red;*/
+  width: 262px;
+  height: 228px;
+
+}
+.box-card4{
+  /*border: 1px solid red;*/
+  width: 524px;
+  height: 113px;
+  margin-top: 228px;
+  margin-left: -786px;
+}
+.box-card5{
+  /*border: 1px solid red;*/
+  width: 262px;
+  height: 113px;
+  margin-top: 228px;
+}

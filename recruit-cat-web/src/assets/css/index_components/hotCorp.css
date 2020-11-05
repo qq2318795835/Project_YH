@@ -1,0 +1,101 @@
+.main5{
+  border: 1px solid red;
+  width: 1184px;
+  margin: 0px auto;
+}
+.line-f{
+  text-align: center;
+  font-size: 26px;
+  margin-top: -5px;
+}
+.line-f :before{
+  content: '';
+  display: inline-block;
+  vertical-align: 8px;
+  margin: 0 10px;
+  width: 60px;
+  height: 1px;
+  background: #d1d4db;
+}
+.line-f :after{
+  content: '';
+  display: inline-block;
+  vertical-align: 8px;
+  margin: 0 10px;
+  width: 60px;
+  height: 1px;
+  background: #d1d4db;
+}
+.m5-body{
+  border: 1px solid red;
+  width: 1184px;
+  margin: 0px auto;
+  overflow: hidden;
+}
+.m5-card1{
+  border: 1px solid red;
+  width: 284px;
+  height: 258px;
+  margin-left: 8px;
+  margin-bottom: 15px;
+  float: left;
+}
+.main5-card1-body{
+  margin-top: 10px;
+  text-align:center;
+}
+.main5-card1-body-line1{
+  border: 1px solid red;
+  margin: 0px auto;
+  width: 61px;
+  height: 61px;
+}
+.main5-card1-body-line2{
+  margin-top: 20px;
+}
+.main5-card1-body-line3{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #8d92a1;
+}
+.m4-card1-con2-1-v{
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  vertical-align: middle;
+  background: #8d92a1;
+  margin: 0 10px;
+}
+.main5-card1-body-line4{
+  height: 36px;
+  margin-top: 20px;
+}
+.main5-card1-body-line4-button{
+  height: 36px;
+  width: 180px;
+  font-size: 13px;
+}
+.el-button.is-plain:focus, .el-button.is-plain:hover {
+  border-color: #8d92a1;
+  color: #8d92a1;
+}
+.m4-button1{
+  text-align: center;
+}
+.m4-button1 :hover{
+  background: #A8AAAC;
+}
+.m4-button1-b1{
+  margin-top: 15px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  width: 218px;
+  background: #909399;
+}
+.back-top{
+
+}
+.back-top-icon{
+  color: #909399;
+}

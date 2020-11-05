@@ -1,0 +1,59 @@
+.Footer{
+  display: flex;/*设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效*/
+  flex-direction: column;/*容器内项目的排列方向(默认横向排列 row)*/
+  justify-content: center;/*项目在主轴上的对齐方式*/
+  align-items: center;/*项目在交叉轴上如何对齐*/
+  /*width: 100%;*/
+  /*display: -webkit-flex; !* Safari *!*/
+
+  /*align-content: center;!*定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用*!*/
+}
+.footer-body{
+  width: 1184px;
+  margin-top: 60px;
+  overflow: hidden;
+}
+.footer-body-1{
+  width: 192px;
+  height: 122px;
+  margin-right: 100px;
+  float: left;
+}
+.footer-body-1-line{
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.footer-body-1-content{
+  font-size: 12px;
+  text-align: left;
+  margin-left: 0px;
+  margin-top: 10px;
+  color: #8d92a1;
+}
+.footer-body-2{
+  width: 192px;
+  height: 122px;
+  margin-right: 90px;
+  float: left;
+}
+.footer-body-3{
+  width: 250px;
+  margin-right: 80px;
+  float: left;
+}
+.footer-body-4{
+  width: 250px;
+  text-align: right;
+  float: right;
+}
+.footer-body-4-line{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.footer-body-4-content{
+  text-align: right;
+  font-size: 12px;
+  margin-left: 0px;
+  margin-top: 10px;
+  color: #8d92a1;
+}

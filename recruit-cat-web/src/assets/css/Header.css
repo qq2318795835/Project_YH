@@ -1,0 +1,37 @@
+.header{
+   margin-top: -8px;
+ }
+.el-menu-demo{
+  display: flex;/*设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效*/
+  /*flex-direction: column;!*容器内项目的排列方向(默认横向排列 row)*!*/
+  justify-content: center;/*项目在主轴上的对齐方式*/
+  align-items: center;/*项目在交叉轴上如何对齐*/
+  width: 100%;
+}
+.el-menu-item-link1{
+  text-decoration: none;
+}
+.el-menu-item2{
+  margin-left: 280px;
+}
+.header-button1{
+  background-color: #545c64;
+  margin-left: 50px;
+  color: #ccced0;
+  border-color: #f1c74e;
+}
+.header-button1 :hover{
+  color: #f1c74e;
+}
+.header-button2{
+  background-color: #545c64;
+  margin-left: 20px;
+  color: #ccced0;
+  border-color: #f1c74e;
+}
+.header-button2 :hover{
+  color: #f1c74e;
+}
+.el-menu-item-link1{
+  text-decoration: none;
+}

@@ -1,0 +1,18 @@
+.search{
+  display: flex;/*设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效*/
+  /*flex-direction: column;!*容器内项目的排列方向(默认横向排列 row)*!*/
+  justify-content: center;/*项目在主轴上的对齐方式*/
+  align-items: center;/*项目在交叉轴上如何对齐*/
+  width: 100%;
+  margin-top: 20px;
+}
+.search-input{
+  width: 600px;
+}
+.search-button{
+  width: 120px;
+  float: right;
+}
+.search-button-button{
+  width: 120px;
+}
