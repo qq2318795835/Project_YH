@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FavoritesListDao extends JpaRepository<FavoritesList,Integer>, JpaSpecificationExecutor<FavoritesList> {
     FavoritesList findByJidAndUid(Integer Jid,Integer Uid);
+    int deleteByJidAndUid(Integer Jid,Integer Uid);
 }

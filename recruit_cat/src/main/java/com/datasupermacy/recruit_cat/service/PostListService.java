@@ -13,7 +13,7 @@ public interface PostListService {
 
     PostList getListById(Integer Pid);
 
-    List<PostList> getListByCid(Integer Cid);
+    List<PostList> getListByCid(Integer Cid,int pageNum,int pageSize);
 
     int addToList(Integer Jid,Integer Cid);
 }

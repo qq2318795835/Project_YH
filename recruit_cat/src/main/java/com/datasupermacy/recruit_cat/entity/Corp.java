@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 public class Corp implements Serializable {
-    private static final long serialVersionUID = -6659177334478928446L;
+    private static final long serialVersionUID = 301843518203242550L;
     private Integer Cid;
     private String Cname;
     private String Cpass;
@@ -16,6 +16,11 @@ public class Corp implements Serializable {
     private String Jname;
     private String Caddress;
     private String Cdescribe;
+    private String Cimg;
+    private String Ctype;
+    private String Cscale;
+    private String Cbusiness_status;
+    private String CrecruitmentStatus;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -69,8 +74,7 @@ public class Corp implements Serializable {
     }
 
     @Basic
-
-    @Column(name = "jid", nullable = true,columnDefinition = "TEXT")
+    @Column(name = "jid", nullable = true, length = -1)
     public String getJid() {
         return Jid;
     }
@@ -80,7 +84,7 @@ public class Corp implements Serializable {
     }
 
     @Basic
-    @Column(name = "jname", nullable = true,columnDefinition = "TEXT")
+    @Column(name = "jname", nullable = true, length = -1)
     public String getJname() {
         return Jname;
     }
@@ -109,6 +113,56 @@ public class Corp implements Serializable {
         Cdescribe = cdescribe;
     }
 
+    @Basic
+    @Column(name = "cimg", nullable = true, length = 255)
+    public String getCimg() {
+        return Cimg;
+    }
+
+    public void setCimg(String cimg) {
+        Cimg = cimg;
+    }
+
+    @Basic
+    @Column(name = "ctype", nullable = true, length = 255)
+    public String getCtype() {
+        return Ctype;
+    }
+
+    public void setCtype(String ctype) {
+        Ctype = ctype;
+    }
+
+    @Basic
+    @Column(name = "cscale", nullable = true, length = 255)
+    public String getCscale() {
+        return Cscale;
+    }
+
+    public void setCscale(String cscale) {
+        Cscale = cscale;
+    }
+
+    @Basic
+    @Column(name = "cbusiness_status", nullable = true, length = 255)
+    public String getCbusiness_status() {
+        return Cbusiness_status;
+    }
+
+    public void setCbusiness_status(String cbusiness_status) {
+        Cbusiness_status = cbusiness_status;
+    }
+
+    @Basic
+    @Column(name = "crecruitment_status", nullable = true, length = 255)
+    public String getCrecruitmentStatus() {
+        return CrecruitmentStatus;
+    }
+
+    public void setCrecruitmentStatus(String crecruitmentStatus) {
+        CrecruitmentStatus = crecruitmentStatus;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -122,11 +176,15 @@ public class Corp implements Serializable {
                 Objects.equals(Jid, corp.Jid) &&
                 Objects.equals(Jname, corp.Jname) &&
                 Objects.equals(Caddress, corp.Caddress) &&
-                Objects.equals(Cdescribe, corp.Cdescribe);
+                Objects.equals(Cdescribe, corp.Cdescribe) &&
+                Objects.equals(Ctype, corp.Ctype) &&
+                Objects.equals(Cscale, corp.Cscale) &&
+                Objects.equals(Cbusiness_status,corp.Cbusiness_status)&&
+                Objects.equals(CrecruitmentStatus, corp.CrecruitmentStatus);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Cid, Cname, Cpass, Cphone, Cemail, Jid, Jname, Caddress, Cdescribe);
+        return Objects.hash(Cid, Cname, Cpass, Cphone, Cemail, Jid, Jname, Caddress, Cdescribe, Ctype, Cscale, Cbusiness_status ,CrecruitmentStatus);
     }
 }

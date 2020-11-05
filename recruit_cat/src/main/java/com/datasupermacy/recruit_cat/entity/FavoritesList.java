@@ -8,12 +8,15 @@ import java.util.Objects;
 @Entity
 @Table(name = "favorites_list", schema = "recruit_cat")
 public class FavoritesList implements Serializable {
-    private static final long serialVersionUID = -6993832736314154609L;
+    private static final long serialVersionUID = -6486095935478722376L;
     private Integer Fid;
     private Integer Uid;
     private Integer Jid;
     private String Jname;
-    private Timestamp Fupdate_time;
+    private Timestamp FupdateTime;
+    private String Jsal;
+    private Integer Cid;
+    private String Cname;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,12 +61,42 @@ public class FavoritesList implements Serializable {
 
     @Basic
     @Column(name = "fupdate_time", nullable = true)
-    public Timestamp getFupdate_time() {
-        return Fupdate_time;
+    public Timestamp getFupdateTime() {
+        return FupdateTime;
     }
 
-    public void setFupdate_time(Timestamp fupdate_time) {
-        Fupdate_time = fupdate_time;
+    public void setFupdateTime(Timestamp fupdateTime) {
+        FupdateTime = fupdateTime;
+    }
+
+    @Basic
+    @Column(name = "jsal", nullable = true, length = 255)
+    public String getJsal() {
+        return Jsal;
+    }
+
+    public void setJsal(String jsal) {
+        Jsal = jsal;
+    }
+
+    @Basic
+    @Column(name = "cid", nullable = true)
+    public Integer getCid() {
+        return Cid;
+    }
+
+    public void setCid(Integer cid) {
+        Cid = cid;
+    }
+
+    @Basic
+    @Column(name = "cname", nullable = true, length = 255)
+    public String getCname() {
+        return Cname;
+    }
+
+    public void setCname(String cname) {
+        Cname = cname;
     }
 
     @Override
@@ -75,11 +108,14 @@ public class FavoritesList implements Serializable {
                 Objects.equals(Uid, that.Uid) &&
                 Objects.equals(Jid, that.Jid) &&
                 Objects.equals(Jname, that.Jname) &&
-                Objects.equals(Fupdate_time, that.Fupdate_time);
+                Objects.equals(FupdateTime, that.FupdateTime) &&
+                Objects.equals(Jsal, that.Jsal) &&
+                Objects.equals(Cid, that.Cid) &&
+                Objects.equals(Cname, that.Cname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Fid, Uid, Jid, Jname, Fupdate_time);
+        return Objects.hash(Fid, Uid, Jid, Jname, FupdateTime, Jsal, Cid, Cname);
     }
 }

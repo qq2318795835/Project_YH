@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/Api/index")
 public class IndexApi {
@@ -20,8 +20,8 @@ public class IndexApi {
     CorpService corpService;
 
 
-    @GetMapping("/Search/{content}")
-    public ResponseEntity SearchByKey(@PathVariable(name = "content") String content,@RequestParam(defaultValue = "1") int pageNum,@RequestParam(defaultValue = "8") int pageSize){
+    @GetMapping("/Search")
+    public ResponseEntity SearchByKey(String content,@RequestParam(defaultValue = "1") int pageNum,@RequestParam(defaultValue = "8") int pageSize){
        List<Job> jobList = jobService.searchJobs(content,pageNum,pageSize);
        List<Corp> corpList = corpService.searchCorps(content,pageNum,pageSize);
        if (jobList!=null&&!jobList.isEmpty()){

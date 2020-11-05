@@ -94,6 +94,8 @@ public class CorpServiceImpl implements CorpService {
         return 0;
     }
 
+
+    @Transactional
     @Override
     public int deleteCorp(Integer Cid) {
         corpDao.deleteById(Cid);

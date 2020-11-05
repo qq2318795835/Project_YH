@@ -3,6 +3,7 @@ package com.datasupermacy.recruit_cat.Api;
 import com.datasupermacy.recruit_cat.entity.Corp;
 import com.datasupermacy.recruit_cat.entity.Job;
 import com.datasupermacy.recruit_cat.service.CorpService;
+import com.datasupermacy.recruit_cat.service.FavoritesListService;
 import com.datasupermacy.recruit_cat.service.JobService;
 import com.datasupermacy.recruit_cat.util.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/Api/Job")
 public class JobApi {
@@ -22,6 +23,14 @@ public class JobApi {
     JobService jobService;
     @Autowired
     CorpService corpService;
+    @Autowired
+    FavoritesListService favoritesListService;
+
+//    public ResponseEntity getJobAndCorpByPaging(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
+//        List<Job> jobList = jobService.getAllJobs();
+//
+//
+//    }
 
     @GetMapping("/")
     public ResponseEntity getJobByPaging(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
@@ -32,8 +41,8 @@ public class JobApi {
         return new ResponseEntity(-1,"没有信息");
     }
 
-    @GetMapping("/{jid}")
-    public ResponseEntity getJobById(@PathVariable(name = "jid") Integer jid){
+    @GetMapping("/jobDetail")
+    public ResponseEntity getJobById(Integer jid){
         Job job =jobService.getJobById(jid);
         if (job!=null){
             return new ResponseEntity(1,job);
@@ -41,8 +50,8 @@ public class JobApi {
         return new ResponseEntity(-1,"没有job信息");
     }
 
-    @GetMapping("/GetJobByJtype/{jtype}")
-    public ResponseEntity GetJobByJtype(@PathVariable(name = "jtype") String jtype,@RequestParam(defaultValue = "1") int pageNum,@RequestParam(defaultValue = "8") int pageSize){
+    @GetMapping("/GetJobByJtype")
+    public ResponseEntity GetJobByJtype(String jtype,@RequestParam(defaultValue = "1") int pageNum,@RequestParam(defaultValue = "8") int pageSize){
         Page<Job> page = jobService.getJobsByJtype(jtype,pageNum,pageSize);
         if (page!=null&&!page.isEmpty()){
             return new ResponseEntity(1, page);
@@ -81,8 +90,8 @@ public class JobApi {
         return new ResponseEntity(-1,"修改job失败");
     }
 
-    @DeleteMapping("/delJob/{Jid}")
-    public ResponseEntity delJob(@PathVariable(name = "Jid") Integer Jid){
+    @DeleteMapping("/delJob")
+    public ResponseEntity delJob(Integer Jid){
         if (jobService.getJobById(Jid)!=null){
             Job job = jobService.getJobById(Jid);
             String jid = job.getJid().toString();
@@ -110,6 +119,14 @@ public class JobApi {
         }
 
         return new ResponseEntity(-1,"删除失败");
+    }
+
+    @PutMapping("/{Jid}/{Uid}")
+    public ResponseEntity addToList(@PathVariable(name = "Jid") Integer Jid,@PathVariable(name = "Uid") Integer Uid){
+        if (favoritesListService.addToList(Jid,Uid)>0){
+            return new ResponseEntity(1);
+        }
+        return new ResponseEntity(-1,"添加失败");
     }
 
 }

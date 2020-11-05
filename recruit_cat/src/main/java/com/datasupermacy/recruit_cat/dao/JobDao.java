@@ -7,7 +7,10 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 
+
 @Repository
 public interface JobDao extends JpaRepository<Job,Integer>, JpaSpecificationExecutor<Job> {
     Page<Job> findByJtype(String jtype, Pageable pageable);
+    Page<Job> findByCid(Integer Cid,Pageable pageable);
+
 }

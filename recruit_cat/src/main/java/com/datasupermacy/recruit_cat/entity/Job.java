@@ -7,106 +7,128 @@ import java.util.Objects;
 
 @Entity
 public class Job implements Serializable {
-    private static final long serialVersionUID = -3886842566611037786L;
-    private Integer jid;
-    private String jname;
-    private String jtype;
-    private String jdescribe;
-    private String jsal;
-    private String jtreatment;
-    private String jaddress;
-    private Integer cid;
-    private Date jupdateTime;
+    private static final long serialVersionUID = -917161080426702655L;
+    private Integer Jid;
+    private String Jname;
+    private String Jtype;
+    private String Jdescribe;
+    private String Jeducation;
+    private String Jexperience;
+    private String Jsal;
+    private String Jtreatment;
+    private String Jaddress;
+    private Integer Cid;
+    private Date JupdateTime;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "jid", nullable = false)
     public Integer getJid() {
-        return jid;
+        return Jid;
     }
 
     public void setJid(Integer jid) {
-        this.jid = jid;
+        Jid = jid;
     }
 
     @Basic
     @Column(name = "jname", nullable = true, length = 255)
     public String getJname() {
-        return jname;
+        return Jname;
     }
 
     public void setJname(String jname) {
-        this.jname = jname;
+        Jname = jname;
     }
 
     @Basic
     @Column(name = "jtype", nullable = true, length = 255)
     public String getJtype() {
-        return jtype;
+        return Jtype;
     }
 
     public void setJtype(String jtype) {
-        this.jtype = jtype;
+        Jtype = jtype;
     }
 
     @Basic
     @Column(name = "jdescribe", nullable = true, length = 255)
     public String getJdescribe() {
-        return jdescribe;
+        return Jdescribe;
     }
 
     public void setJdescribe(String jdescribe) {
-        this.jdescribe = jdescribe;
+        Jdescribe = jdescribe;
+    }
+
+    @Basic
+    @Column(name = "jeducation", nullable = true, length = 255)
+    public String getJeducation() {
+        return Jeducation;
+    }
+
+    public void setJeducation(String jeducation) {
+        Jeducation = jeducation;
+    }
+
+    @Basic
+    @Column(name = "jexperience", nullable = true, length = 255)
+    public String getJexperience() {
+        return Jexperience;
+    }
+
+    public void setJexperience(String jexperience) {
+        Jexperience = jexperience;
     }
 
     @Basic
     @Column(name = "jsal", nullable = true, length = 255)
     public String getJsal() {
-        return jsal;
+        return Jsal;
     }
 
     public void setJsal(String jsal) {
-        this.jsal = jsal;
+        Jsal = jsal;
     }
 
     @Basic
     @Column(name = "jtreatment", nullable = true, length = 255)
     public String getJtreatment() {
-        return jtreatment;
+        return Jtreatment;
     }
 
     public void setJtreatment(String jtreatment) {
-        this.jtreatment = jtreatment;
+        Jtreatment = jtreatment;
     }
 
     @Basic
     @Column(name = "jaddress", nullable = true, length = 255)
     public String getJaddress() {
-        return jaddress;
+        return Jaddress;
     }
 
     public void setJaddress(String jaddress) {
-        this.jaddress = jaddress;
+        Jaddress = jaddress;
     }
 
     @Basic
     @Column(name = "cid", nullable = true)
     public Integer getCid() {
-        return cid;
+        return Cid;
     }
 
     public void setCid(Integer cid) {
-        this.cid = cid;
+        Cid = cid;
     }
 
     @Basic
     @Column(name = "jupdate_time", nullable = true)
     public Date getJupdateTime() {
-        return jupdateTime;
+        return JupdateTime;
     }
 
     public void setJupdateTime(Date jupdateTime) {
-        this.jupdateTime = jupdateTime;
+        JupdateTime = jupdateTime;
     }
 
     @Override
@@ -114,19 +136,21 @@ public class Job implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
-        return Objects.equals(jid, job.jid) &&
-                Objects.equals(jname, job.jname) &&
-                Objects.equals(jtype,job.jtype)&&
-                Objects.equals(jdescribe, job.jdescribe) &&
-                Objects.equals(jsal, job.jsal) &&
-                Objects.equals(jtreatment, job.jtreatment) &&
-                Objects.equals(jaddress, job.jaddress) &&
-                Objects.equals(cid, job.cid) &&
-                Objects.equals(jupdateTime, job.jupdateTime);
+        return Objects.equals(Jid, job.Jid) &&
+                Objects.equals(Jname, job.Jname) &&
+                Objects.equals(Jtype, job.Jtype) &&
+                Objects.equals(Jdescribe, job.Jdescribe) &&
+                Objects.equals(Jeducation, job.Jeducation) &&
+                Objects.equals(Jexperience, job.Jexperience) &&
+                Objects.equals(Jsal, job.Jsal) &&
+                Objects.equals(Jtreatment, job.Jtreatment) &&
+                Objects.equals(Jaddress, job.Jaddress) &&
+                Objects.equals(Cid, job.Cid) &&
+                Objects.equals(JupdateTime, job.JupdateTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(jid, jname,jtype, jdescribe, jsal, jtreatment, jaddress, cid, jupdateTime);
+        return Objects.hash(Jid, Jname, Jtype, Jdescribe, Jeducation, Jexperience, Jsal, Jtreatment, Jaddress, Cid, JupdateTime);
     }
 }

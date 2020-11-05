@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/Api/User")
 public class UserApi {
     @Autowired
     UserService userService;
 
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity getUserByPaging(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
         Page<User> page = userService.getUserByPaging(pageNum,pageSize);
         if (page!=null&&!page.isEmpty()){
@@ -23,8 +23,8 @@ public class UserApi {
         return new ResponseEntity(-1,"无用户信息");
     }
 
-    @GetMapping("/{Uid}")
-    public ResponseEntity getUserById(@PathVariable(name = "Uid") Integer Uid){
+    @GetMapping("/userDetail")
+    public ResponseEntity getUserById(Integer Uid){
         User user = userService.getUserById(Uid);
         if (user!=null){
             return new ResponseEntity(1,user);
@@ -48,8 +48,8 @@ public class UserApi {
         return new ResponseEntity(-1,"更新失败");
     }
 
-    @DeleteMapping("/delUser/{Uid}")
-    public ResponseEntity delUser(@PathVariable(name = "Uid") Integer Uid){
+    @DeleteMapping("/delUser")
+    public ResponseEntity delUser(Integer Uid){
         if (userService.getUserById(Uid)!=null){
             userService.deleteUser(Uid);
             return new ResponseEntity(1);

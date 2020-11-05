@@ -1,17 +1,20 @@
 package com.datasupermacy.recruit_cat.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-public class User {
+public class User implements Serializable {
+    private static final long serialVersionUID = -5052932048690081645L;
     private Integer Uid;
     private String Uname;
     private String Ugender;
     private String Uphone;
     private String Uemail;
     private String Upass;
+    private String Uportrait;
     private Date Ubirth;
     private String Uidentify;
     private String UjobStatus;
@@ -77,6 +80,16 @@ public class User {
 
     public void setUpass(String upass) {
         Upass = upass;
+    }
+
+    @Basic
+    @Column(name = "uportrait", nullable = true, length = 255)
+    public String getUportrait() {
+        return Uportrait;
+    }
+
+    public void setUportrait(String uportrait) {
+        Uportrait = uportrait;
     }
 
     @Basic

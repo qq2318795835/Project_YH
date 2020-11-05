@@ -6,6 +6,9 @@ import com.datasupermacy.recruit_cat.entity.Job;
 import com.datasupermacy.recruit_cat.entity.PostList;
 import com.datasupermacy.recruit_cat.service.PostListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,7 +62,7 @@ public class PostListServiceImpl implements PostListService {
     }
 
     @Override
-    public List<PostList> getListByCid(Integer Cid) {
+    public List<PostList> getListByCid(Integer Cid,int pageNum,int pageSize) {
         Specification<PostList> specification = new Specification<PostList>(){
             @Override
             public Predicate toPredicate(Root<PostList> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
@@ -67,7 +70,9 @@ public class PostListServiceImpl implements PostListService {
                 return p;
             }
         };
-        return null;
+        Pageable pb = PageRequest.of(pageNum-1,pageSize);
+        Page<PostList> page = postListDao.findAll(specification,pb);
+        return page.getContent();
     }
 
     @Override

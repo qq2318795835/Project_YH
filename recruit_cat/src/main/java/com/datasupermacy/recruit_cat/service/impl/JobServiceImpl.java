@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -37,6 +36,13 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
+    public Page<Job> getJobByCid(Integer Cid, int pageNum, int pageSize) {
+        Pageable pb = PageRequest.of(pageNum-1,pageSize);
+        Page<Job> page = jobDao.findByCid(Cid,pb);
+        return page;
+    }
+
+    @Override
     public Job getJobById(Integer Jid) {
         Optional<Job> o = jobDao.findById(Jid);
         if (o.isPresent()){
@@ -50,6 +56,7 @@ public class JobServiceImpl implements JobService {
     public int addJob(Job job) {
         job.setJupdateTime(new Date(System.currentTimeMillis()));
         if (jobDao.save(job)!=null){
+
             return 1;
         }
         return 0;
@@ -93,4 +100,6 @@ public class JobServiceImpl implements JobService {
         Page<Job> page = jobDao.findAll(specification,pb);
         return page.getContent();
     }
+
+
 }

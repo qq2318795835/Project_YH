@@ -1,9 +1,11 @@
 package com.datasupermacy.recruit_cat;
 
 import com.datasupermacy.recruit_cat.entity.Corp;
+import com.datasupermacy.recruit_cat.entity.FavoritesList;
 import com.datasupermacy.recruit_cat.entity.Job;
 import com.datasupermacy.recruit_cat.entity.User;
 import com.datasupermacy.recruit_cat.service.CorpService;
+import com.datasupermacy.recruit_cat.service.FavoritesListService;
 import com.datasupermacy.recruit_cat.service.JobService;
 import com.datasupermacy.recruit_cat.service.UserService;
 import org.apache.commons.lang.StringUtils;
@@ -25,6 +27,8 @@ class RecruitCatApplicationTests {
     private CorpService corpService;
     @Autowired
     private JobService  jobService;
+    @Autowired
+    private FavoritesListService favoritesListService;
 
     @Test
     void contextLoads() {
@@ -182,5 +186,34 @@ class RecruitCatApplicationTests {
         userService.deleteUser(3);
     }
 
+    @Test
+    public void getListByUid(){
+        List<FavoritesList> favoritesLists = favoritesListService.getListByUid(2,1,8);
+        for (int i = 0; i < favoritesLists.size(); i++) {
+            System.out.println("Fid:"+favoritesLists.get(i).getFid());
+            System.out.println("Uid:"+favoritesLists.get(i).getUid());
+            System.out.println("Jid:"+favoritesLists.get(i).getJid());
+            System.out.println("Jname:"+favoritesLists.get(i).getJname());
+            System.out.println("Jsal:"+favoritesLists.get(i).getJsal());
+            System.out.println("Cid:"+favoritesLists.get(i).getCid());
+            System.out.println("Cname:"+favoritesLists.get(i).getCname());
+            System.out.println("Fupdate_time:"+favoritesLists.get(i).getFupdateTime());
+        }
+    }
+
+    @Test
+    public void addToList(){
+        favoritesListService.addToList(4,1);
+    }
+
+    @Test
+    public void delListItem(){
+        favoritesListService.delListItem(4,1);
+    }
+
+    @Test
+    public void getJobByCid(){
+        jobService.getJobByCid(1,1,5);
+    }
 
 }

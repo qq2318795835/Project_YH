@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/Api/Corp")
 public class CorpApi {
@@ -22,7 +22,7 @@ public class CorpApi {
     @Autowired
     CorpService corpService;
 
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity getCorpByPaging(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize) {
         Page<Corp> page = corpService.getCorpByPaging(pageNum,pageSize);
         if (page != null && !page.isEmpty()) {
@@ -31,9 +31,17 @@ public class CorpApi {
         return new ResponseEntity(-1, "没有信息");
     }
 
-    @GetMapping("/{Cid}")
-    public ResponseEntity getCorpById(@PathVariable(name = "Cid") Integer Cid){
+    @GetMapping("/CropDetail")
+    public ResponseEntity getCorpById(Integer Cid){
         Corp corp = corpService.getCorpById(Cid);
+        if (corp!=null){
+            return new ResponseEntity(1,corp);
+        }
+        return new ResponseEntity(-1,"没有corp信息");
+    }
+    @GetMapping("/CropDetail2")
+    public ResponseEntity getCorpByName(String Cname){
+        Corp corp = corpService.getCorpByName(Cname);
         if (corp!=null){
             return new ResponseEntity(1,corp);
         }
@@ -56,8 +64,8 @@ public class CorpApi {
         return new ResponseEntity(-1,"更新企业失败");
     }
 
-    @DeleteMapping("/delCorp/{Cid}")
-    public ResponseEntity delCorp(@PathVariable(name = "Cid") Integer Cid){
+    @DeleteMapping("/delCorp")
+    public ResponseEntity delCorp(Integer Cid){
         if (corpService.getCorpById(Cid)!=null){
             Corp corp = corpService.getCorpById(Cid);
             List<String> list = Arrays.asList(corp.getJid().split(","));
