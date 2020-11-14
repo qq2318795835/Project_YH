@@ -31,7 +31,7 @@ public class CorpApi {
         return new ResponseEntity(-1, "没有信息");
     }
 
-    @GetMapping("/CropDetail")
+    @GetMapping("/CorpDetail")
     public ResponseEntity getCorpById(Integer Cid){
         Corp corp = corpService.getCorpById(Cid);
         if (corp!=null){
@@ -39,7 +39,7 @@ public class CorpApi {
         }
         return new ResponseEntity(-1,"没有corp信息");
     }
-    @GetMapping("/CropDetail2")
+    @GetMapping("/CorpDetail2")
     public ResponseEntity getCorpByName(String Cname){
         Corp corp = corpService.getCorpByName(Cname);
         if (corp!=null){

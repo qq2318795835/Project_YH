@@ -17,7 +17,7 @@ public interface FavoritesListService {
 
     List<FavoritesList> getListByUid(Integer Uid,int pageNum,int pageSize);
 
-    int addToList(Integer Jid,Integer Uid);
+    int addToList(Integer Jid,Integer Uid) throws Exception;
 
     int delListItem(Integer Jid,Integer Uid);
 }

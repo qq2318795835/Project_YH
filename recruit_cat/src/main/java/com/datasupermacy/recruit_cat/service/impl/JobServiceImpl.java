@@ -88,7 +88,7 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public List<Job> searchJobs(String key, int pageNum, int pageSize) {
+    public Page<Job> searchJobs(String key, int pageNum, int pageSize) {
         Specification<Job> specification = new  Specification<Job>(){
             @Override
             public Predicate toPredicate(Root<Job> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
@@ -98,7 +98,7 @@ public class JobServiceImpl implements JobService {
         };
         Pageable pb = PageRequest.of(pageNum-1,pageSize);
         Page<Job> page = jobDao.findAll(specification,pb);
-        return page.getContent();
+        return page;
     }
 
 

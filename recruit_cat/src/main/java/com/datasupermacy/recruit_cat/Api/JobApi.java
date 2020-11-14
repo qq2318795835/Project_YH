@@ -1,10 +1,10 @@
 package com.datasupermacy.recruit_cat.Api;
 
+import com.datasupermacy.recruit_cat.My.PersonalRecommendController;
+import com.datasupermacy.recruit_cat.My1.RecommendController;
 import com.datasupermacy.recruit_cat.entity.Corp;
 import com.datasupermacy.recruit_cat.entity.Job;
-import com.datasupermacy.recruit_cat.service.CorpService;
-import com.datasupermacy.recruit_cat.service.FavoritesListService;
-import com.datasupermacy.recruit_cat.service.JobService;
+import com.datasupermacy.recruit_cat.service.*;
 import com.datasupermacy.recruit_cat.util.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,6 +25,8 @@ public class JobApi {
     CorpService corpService;
     @Autowired
     FavoritesListService favoritesListService;
+    @Autowired
+    PersonalRecommendService per;
 
 //    public ResponseEntity getJobAndCorpByPaging(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
 //        List<Job> jobList = jobService.getAllJobs();
@@ -122,8 +124,12 @@ public class JobApi {
     }
 
     @PutMapping("/{Jid}/{Uid}")
-    public ResponseEntity addToList(@PathVariable(name = "Jid") Integer Jid,@PathVariable(name = "Uid") Integer Uid){
+    public ResponseEntity addToList(@PathVariable(name = "Jid") Integer Jid,@PathVariable(name = "Uid") Integer Uid) throws Exception {
         if (favoritesListService.addToList(Jid,Uid)>0){
+            per.delPer();
+            RecommendController.hotAnalysis();
+          PersonalRecommendController.PersonalRecommend();
+
             return new ResponseEntity(1);
         }
         return new ResponseEntity(-1,"添加失败");

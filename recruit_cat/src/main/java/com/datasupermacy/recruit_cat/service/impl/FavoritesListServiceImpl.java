@@ -1,5 +1,6 @@
 package com.datasupermacy.recruit_cat.service.impl;
 
+import com.datasupermacy.recruit_cat.My1.RecommendController;
 import com.datasupermacy.recruit_cat.dao.CorpDao;
 import com.datasupermacy.recruit_cat.dao.FavoritesListDao;
 import com.datasupermacy.recruit_cat.dao.JobDao;
@@ -80,7 +81,7 @@ public class FavoritesListServiceImpl implements FavoritesListService {
 
     @Transactional
     @Override
-    public int addToList(Integer Jid, Integer Uid) {
+    public int addToList(Integer Jid, Integer Uid) throws Exception{
         int result = 0;
         FavoritesList favoritesList = favoritesListDao.findByJidAndUid(Jid,Uid);
 

@@ -1,13 +1,7 @@
 package com.datasupermacy.recruit_cat;
 
-import com.datasupermacy.recruit_cat.entity.Corp;
-import com.datasupermacy.recruit_cat.entity.FavoritesList;
-import com.datasupermacy.recruit_cat.entity.Job;
-import com.datasupermacy.recruit_cat.entity.User;
-import com.datasupermacy.recruit_cat.service.CorpService;
-import com.datasupermacy.recruit_cat.service.FavoritesListService;
-import com.datasupermacy.recruit_cat.service.JobService;
-import com.datasupermacy.recruit_cat.service.UserService;
+import com.datasupermacy.recruit_cat.entity.*;
+import com.datasupermacy.recruit_cat.service.*;
 import org.apache.commons.lang.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +23,10 @@ class RecruitCatApplicationTests {
     private JobService  jobService;
     @Autowired
     private FavoritesListService favoritesListService;
+    @Autowired
+    private RecommendService recommendService;
+    @Autowired
+    private PersonalRecommendService per;
 
     @Test
     void contextLoads() {
@@ -202,7 +200,7 @@ class RecruitCatApplicationTests {
     }
 
     @Test
-    public void addToList(){
+    public void addToList() throws Exception {
         favoritesListService.addToList(4,1);
     }
 
@@ -214,6 +212,24 @@ class RecruitCatApplicationTests {
     @Test
     public void getJobByCid(){
         jobService.getJobByCid(1,1,5);
+    }
+
+    @Test
+    public void HotJob() throws Exception {
+        List<Recommend> list = recommendService.getReTop10();
+        List<Job> hotJob = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            System.out.println(list.get(i).getJid());
+            hotJob.add(jobService.getJobById(Integer.parseInt(list.get(i).getJid())));
+        }
+        for (int i = 0; i <9; i++) {
+            System.out.println(hotJob.get(i).getJid()  );
+        }
+    }
+
+    @Test
+    public void delPer(){
+        per.delPer();
     }
 
 }

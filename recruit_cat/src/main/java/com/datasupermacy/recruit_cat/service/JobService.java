@@ -21,6 +21,6 @@ public interface JobService {
 
     Page<Job> getJobByPaging(int pageNum,int pageSize);
 
-    List<Job> searchJobs(String key,int pageNum,int pageSize);
+    Page<Job> searchJobs(String key,int pageNum,int pageSize);
 
 }

@@ -17,6 +17,7 @@ public class FavoritesList implements Serializable {
     private String Jsal;
     private Integer Cid;
     private String Cname;
+    private Integer Exp;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -99,6 +100,16 @@ public class FavoritesList implements Serializable {
         Cname = cname;
     }
 
+    @Basic
+    @Column(name = "exp", nullable = true)
+    public Integer getExp() {
+        return Exp;
+    }
+
+    public void setExp(Integer exp) {
+        Exp=exp;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -111,11 +122,12 @@ public class FavoritesList implements Serializable {
                 Objects.equals(FupdateTime, that.FupdateTime) &&
                 Objects.equals(Jsal, that.Jsal) &&
                 Objects.equals(Cid, that.Cid) &&
-                Objects.equals(Cname, that.Cname);
+                Objects.equals(Cname, that.Cname)&&
+                Objects.equals(Exp, that.Exp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Fid, Uid, Jid, Jname, FupdateTime, Jsal, Cid, Cname);
+        return Objects.hash(Fid, Uid, Jid, Jname, FupdateTime, Jsal, Cid, Cname,Exp);
     }
 }

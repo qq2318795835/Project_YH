@@ -18,8 +18,8 @@ public class PostListApi {
     CorpService corpService;
 
 
-    @GetMapping("JobList")
-    public ResponseEntity getJobByCid(Integer Cid, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
+    @GetMapping("/jobList")
+    public ResponseEntity getJobByCid(Integer Cid, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "6") int pageSize){
         Page<Job> page = jobService.getJobByCid(Cid,pageNum,pageSize);
         if (page!=null&&!page.isEmpty()){
             return new ResponseEntity(1,page);

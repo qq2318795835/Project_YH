@@ -17,7 +17,7 @@ public interface CorpService {
 
     Page<Corp> getCorpByPaging(int pageNum,int pageSize);
 
-    List<Corp> searchCorps(String key,int pageNum,int pageSize);
+    Page<Corp> searchCorps(String key,int pageNum,int pageSize);
 
     int addCorp(Corp corp);
 

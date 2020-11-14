@@ -61,7 +61,7 @@ public class CorpServiceImpl implements CorpService {
     }
 
     @Override
-    public List<Corp> searchCorps(String key, int pageNum, int pageSize) {
+    public Page<Corp> searchCorps(String key, int pageNum, int pageSize) {
         Specification<Corp> specification = new  Specification<Corp>(){
             @Override
             public Predicate toPredicate(Root<Corp> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
@@ -71,7 +71,7 @@ public class CorpServiceImpl implements CorpService {
         };
         Pageable pb = PageRequest.of(pageNum-1,pageSize);
         Page<Corp> page = corpDao.findAll(specification,pb);
-        return page.getContent();
+        return page;
     }
 
     @Transactional

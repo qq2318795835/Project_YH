@@ -1,6 +1,7 @@
 package com.datasupermacy.recruit_cat.Api;
 
 import com.datasupermacy.recruit_cat.entity.FavoritesList;
+import com.datasupermacy.recruit_cat.service.ClearPerService;
 import com.datasupermacy.recruit_cat.service.FavoritesListService;
 import com.datasupermacy.recruit_cat.util.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import java.util.List;
 public class FavoritesListApi {
     @Autowired
     FavoritesListService favoritesListService;
+    @Autowired
+    ClearPerService clearPerService;
 
     @GetMapping("/jobList")
     public ResponseEntity getListByUid(Integer Uid, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
@@ -27,6 +30,7 @@ public class FavoritesListApi {
     @DeleteMapping("/{Jid}/{Uid}")
     public ResponseEntity delListItem(@PathVariable(name = "Jid") Integer Jid,@PathVariable(name = "Uid") Integer Uid){
         if (favoritesListService.delListItem(Jid,Uid)>0){
+            clearPerService.clearPer();
             return new ResponseEntity(1);
         }
         return new ResponseEntity(-1,"删除失败");
