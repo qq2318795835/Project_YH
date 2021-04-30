@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datasupermacy.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="cn.datasupermacy.entity.User">
+    <constructor>
+      <idArg column="uid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="uname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="uloginname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="uaddress" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="usex" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="uremark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="upwd" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="did" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="uhiredate" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />
+      <arg column="umgr" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="uavailable" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="uordernum" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="utype" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="uimgpath" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="usalt" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    uid, uname, uloginname, uaddress, usex, uremark, upwd, did, uhiredate, umgr, uavailable,
+    uordernum, utype, uimgpath, usalt
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_user
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_user
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.datasupermacy.entity.User">
+    insert into sys_user (uid, uname, uloginname,
+      uaddress, usex, uremark,
+      upwd, did, uhiredate,
+      umgr, uavailable, uordernum,
+      utype, uimgpath, usalt
+      )
+    values (#{uid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{uloginname,jdbcType=VARCHAR},
+      #{uaddress,jdbcType=VARCHAR}, #{usex,jdbcType=INTEGER}, #{uremark,jdbcType=VARCHAR},
+      #{upwd,jdbcType=VARCHAR}, #{did,jdbcType=INTEGER}, #{uhiredate,jdbcType=TIMESTAMP},
+      #{umgr,jdbcType=INTEGER}, #{uavailable,jdbcType=INTEGER}, #{uordernum,jdbcType=INTEGER},
+      #{utype,jdbcType=INTEGER}, #{uimgpath,jdbcType=VARCHAR}, #{usalt,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.datasupermacy.entity.User">
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="uname != null">
+        uname,
+      </if>
+      <if test="uloginname != null">
+        uloginname,
+      </if>
+      <if test="uaddress != null">
+        uaddress,
+      </if>
+      <if test="usex != null">
+        usex,
+      </if>
+      <if test="uremark != null">
+        uremark,
+      </if>
+      <if test="upwd != null">
+        upwd,
+      </if>
+      <if test="did != null">
+        did,
+      </if>
+      <if test="uhiredate != null">
+        uhiredate,
+      </if>
+      <if test="umgr != null">
+        umgr,
+      </if>
+      <if test="uavailable != null">
+        uavailable,
+      </if>
+      <if test="uordernum != null">
+        uordernum,
+      </if>
+      <if test="utype != null">
+        utype,
+      </if>
+      <if test="uimgpath != null">
+        uimgpath,
+      </if>
+      <if test="usalt != null">
+        usalt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null">
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="uloginname != null">
+        #{uloginname,jdbcType=VARCHAR},
+      </if>
+      <if test="uaddress != null">
+        #{uaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="usex != null">
+        #{usex,jdbcType=INTEGER},
+      </if>
+      <if test="uremark != null">
+        #{uremark,jdbcType=VARCHAR},
+      </if>
+      <if test="upwd != null">
+        #{upwd,jdbcType=VARCHAR},
+      </if>
+      <if test="did != null">
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="uhiredate != null">
+        #{uhiredate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="umgr != null">
+        #{umgr,jdbcType=INTEGER},
+      </if>
+      <if test="uavailable != null">
+        #{uavailable,jdbcType=INTEGER},
+      </if>
+      <if test="uordernum != null">
+        #{uordernum,jdbcType=INTEGER},
+      </if>
+      <if test="utype != null">
+        #{utype,jdbcType=INTEGER},
+      </if>
+      <if test="uimgpath != null">
+        #{uimgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="usalt != null">
+        #{usalt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.datasupermacy.entity.User">
+    update sys_user
+    <trim prefix="set" suffixOverrides=",">
+      <if test="user.uname != null">
+        uname = #{user.uname,jdbcType=VARCHAR},
+      </if>
+      <if test="user.uloginname != null">
+        uloginname = #{user.uloginname,jdbcType=VARCHAR},
+      </if>
+      <if test="user.uaddress != null">
+        uaddress = #{user.uaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="user.usex != null">
+        usex = #{user.usex,jdbcType=INTEGER},
+      </if>
+      <if test="user.uremark != null">
+        uremark = #{user.uremark,jdbcType=VARCHAR},
+      </if>
+      <if test="user.upwd != null">
+        upwd = #{user.upwd,jdbcType=VARCHAR},
+      </if>
+      <if test="user.did != null">
+        did = #{user.did,jdbcType=INTEGER},
+      </if>
+      <if test="user.uhiredate != null">
+        uhiredate = #{user.uhiredate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user.umgr != null">
+        umgr = #{user.umgr,jdbcType=INTEGER},
+      </if>
+      <if test="user.uavailable != null">
+        uavailable = #{user.uavailable,jdbcType=INTEGER},
+      </if>
+      <if test="user.uordernum != null">
+        uordernum = #{user.uordernum,jdbcType=INTEGER},
+      </if>
+      <if test="user.utype != null">
+        utype = #{user.utype,jdbcType=INTEGER},
+      </if>
+      <if test="user.uimgpath != null">
+        uimgpath = #{user.uimgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="user.usalt != null">
+        usalt = #{user.usalt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    where uid = #{uid,jdbcType=INTEGER};
+  </update>
+  <select id="findAllUser" parameterType="int" resultType="cn.datasupermacy.entity.User">
+        select * from sys_user ;
+  </select>
+
+  <select id="findUserByName" parameterType="String" resultType="cn.datasupermacy.entity.User">
+        select * from sys_user where uloginname = #{uloginname,jdbcType=VARCHAR} ;
+  </select>
+
+  <select id="findUserByUname" parameterType="String" resultType="cn.datasupermacy.entity.User">
+        select * from sys_user where uname = #{uname,jdbcType=VARCHAR} ;
+  </select>
+</mapper>

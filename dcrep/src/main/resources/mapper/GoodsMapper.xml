@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datasupermacy.dao.GoodsMapper">
+  <resultMap id="BaseResultMap" type="cn.datasupermacy.entity.Goods">
+    <constructor>
+      <idArg column="gid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="gname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="produceplace" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="size" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="gpackage" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="productcode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="promitcode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="description" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="price" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="dangernum" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="gimg" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="available" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="pid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    gid, gname, produceplace, size, gpackage, productcode, promitcode, description, price, 
+    number, dangernum, gimg, available, pid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bus_goods
+    where gid = #{gid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bus_goods
+    where gid = #{gid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.datasupermacy.entity.Goods">
+    insert into bus_goods (gid, gname, produceplace, 
+      size, gpackage, productcode, 
+      promitcode, description, price, 
+      number, dangernum, gimg, 
+      available, pid)
+    values (#{gid,jdbcType=INTEGER}, #{gname,jdbcType=VARCHAR}, #{produceplace,jdbcType=VARCHAR}, 
+      #{size,jdbcType=VARCHAR}, #{gpackage,jdbcType=VARCHAR}, #{productcode,jdbcType=VARCHAR}, 
+      #{promitcode,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
+      #{number,jdbcType=INTEGER}, #{dangernum,jdbcType=INTEGER}, #{gimg,jdbcType=VARCHAR}, 
+      #{available,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.datasupermacy.entity.Goods">
+    insert into bus_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gid != null">
+        gid,
+      </if>
+      <if test="gname != null">
+        gname,
+      </if>
+      <if test="produceplace != null">
+        produceplace,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="gpackage != null">
+        gpackage,
+      </if>
+      <if test="productcode != null">
+        productcode,
+      </if>
+      <if test="promitcode != null">
+        promitcode,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="dangernum != null">
+        dangernum,
+      </if>
+      <if test="gimg != null">
+        gimg,
+      </if>
+      <if test="available != null">
+        available,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gid != null">
+        #{gid,jdbcType=INTEGER},
+      </if>
+      <if test="gname != null">
+        #{gname,jdbcType=VARCHAR},
+      </if>
+      <if test="produceplace != null">
+        #{produceplace,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="gpackage != null">
+        #{gpackage,jdbcType=VARCHAR},
+      </if>
+      <if test="productcode != null">
+        #{productcode,jdbcType=VARCHAR},
+      </if>
+      <if test="promitcode != null">
+        #{promitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="dangernum != null">
+        #{dangernum,jdbcType=INTEGER},
+      </if>
+      <if test="gimg != null">
+        #{gimg,jdbcType=VARCHAR},
+      </if>
+      <if test="available != null">
+        #{available,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.datasupermacy.entity.Goods">
+    update bus_goods
+    <set>
+      <if test="goods.gname != null">
+        gname = #{goods.gname,jdbcType=VARCHAR},
+      </if>
+      <if test="goods.produceplace != null">
+        produceplace = #{goods.produceplace,jdbcType=VARCHAR},
+      </if>
+      <if test="goods.size != null">
+        size = #{goods.size,jdbcType=VARCHAR},
+      </if>
+      <if test="goods.gpackage != null">
+        gpackage = #{goods.gpackage,jdbcType=VARCHAR},
+      </if>
+      <if test="goods.productcode != null">
+        productcode = #{goods.productcode,jdbcType=VARCHAR},
+      </if>
+      <if test="goods.promitcode != null">
+        promitcode = #{goods.promitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="goods.description != null">
+        description = #{goods.description,jdbcType=VARCHAR},
+      </if>
+      <if test="goods.price != null">
+        price = #{goods.price,jdbcType=DOUBLE},
+      </if>
+      <if test="goods.number != null">
+        number = #{goods.number,jdbcType=INTEGER},
+      </if>
+      <if test="goods.dangernum != null">
+        dangernum = #{goods.dangernum,jdbcType=INTEGER},
+      </if>
+      <if test="goods.gimg != null">
+        gimg = #{goods.gimg,jdbcType=VARCHAR},
+      </if>
+      <if test="goods.available != null">
+        available = #{goods.available,jdbcType=INTEGER},
+      </if>
+      <if test="goods.pid != null">
+        pid = #{goods.pid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where gid = #{gid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.datasupermacy.entity.Goods">
+    update bus_goods
+    set gname = #{goods.gname,jdbcType=VARCHAR},
+      produceplace = #{goods.produceplace,jdbcType=VARCHAR},
+      size = #{goods.size,jdbcType=VARCHAR},
+      gpackage = #{goods.gpackage,jdbcType=VARCHAR},
+      productcode = #{goods.productcode,jdbcType=VARCHAR},
+      promitcode = #{goods.promitcode,jdbcType=VARCHAR},
+      description = #{goods.description,jdbcType=VARCHAR},
+      price = #{goods.price,jdbcType=DOUBLE},
+      number = #{goods.number,jdbcType=INTEGER},
+      dangernum = #{goods.dangernum,jdbcType=INTEGER},
+      gimg = #{goods.gimg,jdbcType=VARCHAR},
+      available = #{goods.available,jdbcType=INTEGER},
+      pid = #{goods.pid,jdbcType=INTEGER}
+    where gid = #{gid,jdbcType=INTEGER}
+  </update>
+
+  <select id="findAllGoods" parameterType="int" resultType="cn.datasupermacy.entity.Goods">
+        select * from bus_goods ;
+  </select>
+
+  <select id="findGoodsByName" parameterType="String" resultType="cn.datasupermacy.entity.Goods">
+        select * from bus_goods where gname = #{gname,jdbcType=VARCHAR};
+  </select>
+
+  <select id="findGoodsByPid" parameterType="int" resultType="cn.datasupermacy.entity.Goods">
+        select * from bus_goods where pid = #{pid,jdbcType=INTEGER};
+  </select>
+
+  <select id="findGoodsBySize" parameterType="String" resultType="cn.datasupermacy.entity.Goods">
+        select * from bus_goods where size = #{size,jdbcType=VARCHAR};
+  </select>
+
+  <select id="findGoodsByPackage" parameterType="String" resultType="cn.datasupermacy.entity.Goods">
+        select * from bus_goods where gpackage = #{gpackage,jdbcType=VARCHAR};
+  </select>
+
+
+</mapper>

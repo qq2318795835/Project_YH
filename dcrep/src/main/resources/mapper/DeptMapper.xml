@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datasupermacy.dao.DeptMapper">
+  <resultMap id="BaseResultMap" type="cn.datasupermacy.entity.Dept">
+    <constructor>
+      <idArg column="did" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="dpid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="dtitle" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="dopen" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="dremark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="daddress" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="davailable" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="dordernum" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="dcreatetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    did, dpid, dtitle, dopen, dremark, daddress, davailable, dordernum, dcreatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_dept
+    where did = #{did,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_dept
+    where did = #{did,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.datasupermacy.entity.Dept">
+    insert into sys_dept (did, dpid, dtitle, 
+      dopen, dremark, daddress, 
+      davailable, dordernum, dcreatetime
+      )
+    values (#{did,jdbcType=INTEGER}, #{dpid,jdbcType=INTEGER}, #{dtitle,jdbcType=VARCHAR}, 
+      #{dopen,jdbcType=INTEGER}, #{dremark,jdbcType=VARCHAR}, #{daddress,jdbcType=VARCHAR}, 
+      #{davailable,jdbcType=INTEGER}, #{dordernum,jdbcType=INTEGER}, #{dcreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.datasupermacy.entity.Dept">
+    insert into sys_dept
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="did != null">
+        did,
+      </if>
+      <if test="dpid != null">
+        dpid,
+      </if>
+      <if test="dtitle != null">
+        dtitle,
+      </if>
+      <if test="dopen != null">
+        dopen,
+      </if>
+      <if test="dremark != null">
+        dremark,
+      </if>
+      <if test="daddress != null">
+        daddress,
+      </if>
+      <if test="davailable != null">
+        davailable,
+      </if>
+      <if test="dordernum != null">
+        dordernum,
+      </if>
+      <if test="dcreatetime != null">
+        dcreatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="did != null">
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="dpid != null">
+        #{dpid,jdbcType=INTEGER},
+      </if>
+      <if test="dtitle != null">
+        #{dtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="dopen != null">
+        #{dopen,jdbcType=INTEGER},
+      </if>
+      <if test="dremark != null">
+        #{dremark,jdbcType=VARCHAR},
+      </if>
+      <if test="daddress != null">
+        #{daddress,jdbcType=VARCHAR},
+      </if>
+      <if test="davailable != null">
+        #{davailable,jdbcType=INTEGER},
+      </if>
+      <if test="dordernum != null">
+        #{dordernum,jdbcType=INTEGER},
+      </if>
+      <if test="dcreatetime != null">
+        #{dcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.datasupermacy.entity.Dept">
+    update sys_dept
+    <set>
+      <if test="dept.dpid != null">
+        dpid = #{dept.dpid,jdbcType=INTEGER},
+      </if>
+      <if test="dept.dtitle != null">
+        dtitle = #{dept.dtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="dept.dopen != null">
+        dopen = #{dept.dopen,jdbcType=INTEGER},
+      </if>
+      <if test="dept.dremark != null">
+        dremark = #{dept.dremark,jdbcType=VARCHAR},
+      </if>
+      <if test="dept.daddress != null">
+        daddress = #{dept.daddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dept.davailable != null">
+        davailable = #{dept.davailable,jdbcType=INTEGER},
+      </if>
+      <if test="dept.dordernum != null">
+        dordernum = #{dept.dordernum,jdbcType=INTEGER},
+      </if>
+      <if test="dept.dcreatetime != null">
+        dcreatetime = #{dept.dcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.datasupermacy.entity.Dept">
+    update sys_dept
+    set dpid = #{dept.dpid,jdbcType=INTEGER},
+      dtitle = #{dept.dtitle,jdbcType=VARCHAR},
+      dopen = #{dept.dopen,jdbcType=INTEGER},
+      dremark = #{dept.dremark,jdbcType=VARCHAR},
+      daddress = #{dept.daddress,jdbcType=VARCHAR},
+      davailable = #{dept.davailable,jdbcType=INTEGER},
+      dordernum = #{dept.dordernum,jdbcType=INTEGER},
+      dcreatetime = #{dept.dcreatetime,jdbcType=TIMESTAMP}
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+
+  <select id="findAllDept" parameterType="int" resultType="cn.datasupermacy.entity.Dept">
+        select * from sys_dept ;
+  </select>
+
+  <select id="findDeptByName" parameterType="String" resultType="cn.datasupermacy.entity.Dept">
+        select * from sys_dept where dtitle = #{dtitle,jdbcType=VARCHAR};
+  </select>
+
+  <select id="findDeptByDpid" parameterType="int" resultType="cn.datasupermacy.entity.Dept">
+        select * from sys_dept where dpid = #{dpid,jdbcType=INTEGER};
+  </select>
+
+  <select id="findDeptByAddress" parameterType="String" resultType="cn.datasupermacy.entity.Dept">
+        select * from sys_dept where daddress = #{daddress,jdbcType=INTEGER};
+  </select>
+
+</mapper>

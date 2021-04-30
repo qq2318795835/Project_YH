@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datasupermacy.dao.CustomerMapper">
+  <resultMap id="BaseResultMap" type="cn.datasupermacy.entity.Customer">
+    <constructor>
+      <idArg column="cid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="customernName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="postcode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="caddress" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ctelephone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="contact" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="contactNumber" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="backAccount" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="contactEmail" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    cid, customernName, postcode, caddress, ctelephone, contact, contactNumber, backAccount, 
+    contactEmail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bus_customer
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bus_customer
+    where cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.datasupermacy.entity.Customer">
+    insert into bus_customer (cid, customernName, postcode, 
+      caddress, ctelephone, contact, 
+      contactNumber, backAccount, contactEmail
+      )
+    values (#{cid,jdbcType=INTEGER}, #{customernname,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, 
+      #{caddress,jdbcType=VARCHAR}, #{ctelephone,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
+      #{contactnumber,jdbcType=VARCHAR}, #{backaccount,jdbcType=VARCHAR}, #{contactemail,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.datasupermacy.entity.Customer">
+    insert into bus_customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="customernname != null">
+        customernName,
+      </if>
+      <if test="postcode != null">
+        postcode,
+      </if>
+      <if test="caddress != null">
+        caddress,
+      </if>
+      <if test="ctelephone != null">
+        ctelephone,
+      </if>
+      <if test="contact != null">
+        contact,
+      </if>
+      <if test="contactnumber != null">
+        contactNumber,
+      </if>
+      <if test="backaccount != null">
+        backAccount,
+      </if>
+      <if test="contactemail != null">
+        contactEmail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="customernname != null">
+        #{customernname,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null">
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="caddress != null">
+        #{caddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ctelephone != null">
+        #{ctelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null">
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactnumber != null">
+        #{contactnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="backaccount != null">
+        #{backaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="contactemail != null">
+        #{contactemail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.datasupermacy.entity.Customer">
+    update bus_customer
+    <set>
+      <if test="customer.customernname != null">
+        customernName = #{customer.customernname,jdbcType=VARCHAR},
+      </if>
+      <if test="customer.postcode != null">
+        postcode = #{customer.postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="customer.caddress != null">
+        caddress = #{customer.caddress,jdbcType=VARCHAR},
+      </if>
+      <if test="customer.ctelephone != null">
+        ctelephone = #{customer.ctelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="customer.contact != null">
+        contact = #{customer.contact,jdbcType=VARCHAR},
+      </if>
+      <if test="customer.contactnumber != null">
+        contactNumber = #{customer.contactnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="customer.backaccount != null">
+        backAccount = #{customer.backaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="customer.contactemail != null">
+        contactEmail = #{customer.contactemail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.datasupermacy.entity.Customer">
+    update bus_customer
+    set customernName = #{customer.customernname,jdbcType=VARCHAR},
+      postcode = #{customer.postcode,jdbcType=VARCHAR},
+      caddress = #{customer.caddress,jdbcType=VARCHAR},
+      ctelephone = #{customer.ctelephone,jdbcType=VARCHAR},
+      contact = #{customer.contact,jdbcType=VARCHAR},
+      contactNumber = #{customer.contactnumber,jdbcType=VARCHAR},
+      backAccount = #{customer.backaccount,jdbcType=VARCHAR},
+      contactEmail = #{customer.contactemail,jdbcType=VARCHAR}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+
+  <select id="findAllCustomer" parameterType="int" resultType="cn.datasupermacy.entity.Customer">
+        select * from bus_customer ;
+  </select>
+
+  <select id="findCustomerByName" parameterType="String" resultType="cn.datasupermacy.entity.Customer">
+        select * from bus_customer where customernname = #{customernname,jdbcType=VARCHAR};
+  </select>
+
+
+</mapper>

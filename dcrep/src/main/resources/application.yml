@@ -1,0 +1,31 @@
+server:
+  port: 8079
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dcrep?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: root
+    password: yanghui.123456
+
+  # redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: yanghui.123456
+    database: 0
+    timeout: 3000
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.datasupermacy.entity
+
+#showSql
+logging:
+  level:
+    com:
+      example:
+#限制文件大小
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 200MB
