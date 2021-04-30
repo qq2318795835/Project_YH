@@ -149,4 +149,9 @@
   <select id="findProviderByName" parameterType="String" resultType="cn.datasupermacy.entity.Provider">
         select * from bus_provider where providername = #{providername,jdbcType=VARCHAR};
   </select>
+
+  <select id="findProviderByKey" parameterType="String" resultType="cn.datasupermacy.entity.Provider">
+        select * from bus_provider where providername like CONCAT('%',#{key},'%')
+        or address like CONCAT('%',#{key},'%') or contact like CONCAT('%',#{key},'%');
+  </select>
 </mapper>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datasupermacy.dao.InportsMapper">
+  <resultMap id="BaseResultMap" type="cn.datasupermacy.entity.Inports">
+    <constructor>
+      <idArg column="Iid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="paytype" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="inporttime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="operateperson" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="inportprice" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="providerid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="goodsid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="sid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="totalweight" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="outportinfo" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Iid, paytype, inporttime, operateperson, number, remark, inportprice, providerid, 
+    goodsid, sid, totalweight,outportinfo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bus_inport
+    where Iid = #{iid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bus_inport
+    where Iid = #{iid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.datasupermacy.entity.Inports">
+    insert into bus_inport (Iid, paytype, inporttime, 
+      operateperson, number, remark, 
+      inportprice, providerid, goodsid, 
+      sid, totalweight, outportinfo)
+    values (#{Iid,jdbcType=INTEGER}, #{paytype,jdbcType=VARCHAR}, #{inporttime,jdbcType=TIMESTAMP}, 
+      #{operateperson,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{inportprice,jdbcType=DOUBLE}, #{providerid,jdbcType=INTEGER}, #{goodsid,jdbcType=INTEGER}, 
+      #{sid,jdbcType=INTEGER}, #{totalweight,jdbcType=DOUBLE}, #{outportinfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.datasupermacy.entity.Inports">
+    insert into bus_inport
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="Iid != null">
+        Iid,
+      </if>
+      <if test="paytype != null">
+        paytype,
+      </if>
+      <if test="inporttime != null">
+        inporttime,
+      </if>
+      <if test="operateperson != null">
+        operateperson,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="inportprice != null">
+        inportprice,
+      </if>
+      <if test="providerid != null">
+        providerid,
+      </if>
+      <if test="goodsid != null">
+        goodsid,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="totalweight != null">
+        totalweight,outportinfo
+      </if>
+      <if test="outportinfo != null">
+        outportinfo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="Iid != null">
+        #{Iid,jdbcType=INTEGER},
+      </if>
+      <if test="paytype != null">
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="inporttime != null">
+        #{inporttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateperson != null">
+        #{operateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="inportprice != null">
+        #{inportprice,jdbcType=DOUBLE},
+      </if>
+      <if test="providerid != null">
+        #{providerid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="totalweight != null">
+        #{totalweight,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null">
+        #{outportinfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.datasupermacy.entity.Inports">
+    update bus_inport
+    <set>
+      <if test="inports.paytype != null">
+        paytype = #{inports.paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="inports.inporttime != null">
+        inporttime = #{inports.inporttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inports.operateperson != null">
+        operateperson = #{inports.operateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="inports.number != null">
+        number = #{inports.number,jdbcType=INTEGER},
+      </if>
+      <if test="inports.remark != null">
+        remark = #{inports.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="inports.inportprice != null">
+        inportprice = #{inports.inportprice,jdbcType=DOUBLE},
+      </if>
+      <if test="inports.providerid != null">
+        providerid = #{inports.providerid,jdbcType=INTEGER},
+      </if>
+      <if test="inports.goodsid != null">
+        goodsid = #{inports.goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="inports.sid != null">
+        sid = #{inports.sid,jdbcType=INTEGER},
+      </if>
+      <if test="inports.totalweight != null">
+        totalweight = #{inports.totalweight,jdbcType=DOUBLE},
+      </if>
+      <if test="inports.outportinfo != null">
+        outportinfo = #{inports.outportinfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Iid = #{iid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.datasupermacy.entity.Inports">
+    update bus_inport
+    set paytype = #{inports.paytype,jdbcType=VARCHAR},
+      inporttime = #{inports.inporttime,jdbcType=TIMESTAMP},
+      operateperson = #{inports.operateperson,jdbcType=VARCHAR},
+      number = #{inports.number,jdbcType=INTEGER},
+      remark = #{inports.remark,jdbcType=VARCHAR},
+      inportprice = #{inports.inportprice,jdbcType=DOUBLE},
+      providerid = #{inports.providerid,jdbcType=INTEGER},
+      goodsid = #{inports.goodsid,jdbcType=INTEGER},
+      sid = #{inports.sid,jdbcType=INTEGER},
+      totalweight = #{inports.totalweight,jdbcType=DOUBLE},
+      outportinfo = #{inports.outportinfo,jdbcType=VARCHAR},
+    where Iid = #{iid,jdbcType=INTEGER}
+  </update>
+
+  <select id="findAllInports" parameterType="int" resultType="cn.datasupermacy.entity.Inports">
+        select * from bus_inport ORDER BY inporttime DESC;
+  </select>
+
+  <select id="findInportsByGid" parameterType="int" resultType="cn.datasupermacy.entity.Inports">
+        select * from bus_inport where goodsid = #{gid,jdbcType=INTEGER} ORDER BY inporttime DESC;
+  </select>
+
+  <select id="findInportsByPid" parameterType="int" resultType="cn.datasupermacy.entity.Inports">
+        select * from bus_inport where providerid = #{pid,jdbcType=INTEGER} ORDER BY inporttime DESC;
+  </select>
+
+  <select id="findInportsBySid" parameterType="int" resultType="cn.datasupermacy.entity.Inports">
+        select * from bus_inport where sid = #{sid,jdbcType=INTEGER} ORDER BY inporttime DESC;
+  </select>
+
+  <select id="findInportsByOname" parameterType="String" resultType="cn.datasupermacy.entity.Inports">
+        select * from bus_inport where operateperson = #{operateperson,jdbcType=VARCHAR} ORDER BY inporttime DESC;
+  </select>
+  <select id="findInportsByDate" parameterType="Date" resultType="cn.datasupermacy.entity.Inports">
+        select * from bus_inport where inporttime = #{inporttime,jdbcType=TIMESTAMP};
+  </select>
+</mapper>

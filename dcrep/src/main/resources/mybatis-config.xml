@@ -30,5 +30,10 @@
         <mapper resource="mapper/CustomerMapper.xml" />
         <mapper resource="mapper/ProviderMapper.xml" />
         <mapper resource="mapper/GoodsMapper.xml" />
+        <mapper resource="mapper/InportsMapper.xml" />
+        <mapper resource="mapper/StoreHouseMapper.xml" />
+        <mapper resource="mapper/OutportsMapper.xml" />
+        <mapper resource="mapper/SalesMapper.xml" />
+        <mapper resource="mapper/SalesBackMapper.xml" />
     </mappers>
 </configuration>

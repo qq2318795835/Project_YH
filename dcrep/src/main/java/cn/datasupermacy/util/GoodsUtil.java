@@ -1,9 +1,8 @@
-package cn.datasupermacy.entity;
+package cn.datasupermacy.util;
 
 import java.io.Serializable;
 
-public class Goods implements Serializable {
-    private static final long serialVersionUID = 1677244683476529418L;
+public class GoodsUtil implements Serializable {
     private Integer gid;
 
     private String gname;
@@ -32,11 +31,12 @@ public class Goods implements Serializable {
 
     private Integer pid;
 
-    private Integer sid;
+    private String pname;
 
-    private Double totalweight;
+    public GoodsUtil() {
+    }
 
-    public Goods(Integer gid, String gname, String produceplace, String size, String gpackage, String productcode, String promitcode, String description, Double price, Integer number, Integer dangernum, String gimg, Integer available, Integer pid, Integer sid, Double totalweight) {
+    public GoodsUtil(Integer gid, String gname, String produceplace, String size, String gpackage, String productcode, String promitcode, String description, Double price, Integer number, Integer dangernum, String gimg, Integer available, Integer pid, String pname) {
         this.gid = gid;
         this.gname = gname;
         this.produceplace = produceplace;
@@ -51,12 +51,7 @@ public class Goods implements Serializable {
         this.gimg = gimg;
         this.available = available;
         this.pid = pid;
-        this.sid = sid;
-        this.totalweight = totalweight;
-    }
-
-    public Goods() {
-        super();
+        this.pname = pname;
     }
 
     public Integer getGid() {
@@ -72,7 +67,7 @@ public class Goods implements Serializable {
     }
 
     public void setGname(String gname) {
-        this.gname = gname == null ? null : gname.trim();
+        this.gname = gname;
     }
 
     public String getProduceplace() {
@@ -80,7 +75,7 @@ public class Goods implements Serializable {
     }
 
     public void setProduceplace(String produceplace) {
-        this.produceplace = produceplace == null ? null : produceplace.trim();
+        this.produceplace = produceplace;
     }
 
     public String getSize() {
@@ -88,7 +83,7 @@ public class Goods implements Serializable {
     }
 
     public void setSize(String size) {
-        this.size = size == null ? null : size.trim();
+        this.size = size;
     }
 
     public String getGpackage() {
@@ -96,7 +91,7 @@ public class Goods implements Serializable {
     }
 
     public void setGpackage(String gpackage) {
-        this.gpackage = gpackage == null ? null : gpackage.trim();
+        this.gpackage = gpackage;
     }
 
     public String getProductcode() {
@@ -104,7 +99,7 @@ public class Goods implements Serializable {
     }
 
     public void setProductcode(String productcode) {
-        this.productcode = productcode == null ? null : productcode.trim();
+        this.productcode = productcode;
     }
 
     public String getPromitcode() {
@@ -112,7 +107,7 @@ public class Goods implements Serializable {
     }
 
     public void setPromitcode(String promitcode) {
-        this.promitcode = promitcode == null ? null : promitcode.trim();
+        this.promitcode = promitcode;
     }
 
     public String getDescription() {
@@ -120,7 +115,7 @@ public class Goods implements Serializable {
     }
 
     public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+        this.description = description;
     }
 
     public Double getPrice() {
@@ -152,7 +147,7 @@ public class Goods implements Serializable {
     }
 
     public void setGimg(String gimg) {
-        this.gimg = gimg == null ? null : gimg.trim();
+        this.gimg = gimg;
     }
 
     public Integer getAvailable() {
@@ -171,25 +166,17 @@ public class Goods implements Serializable {
         this.pid = pid;
     }
 
-    public Integer getSid() {
-        return sid;
+    public String getPname() {
+        return pname;
     }
 
-    public void setSid(Integer sid) {
-        this.sid = sid;
-    }
-
-    public Double getTotalweight() {
-        return totalweight;
-    }
-
-    public void setTotalweight(Double totalweight) {
-        this.totalweight = totalweight;
+    public void setPname(String pname) {
+        this.pname = pname;
     }
 
     @Override
     public String toString() {
-        return "Goods{" +
+        return "GoodsUtil{" +
                 "gid=" + gid +
                 ", gname='" + gname + '\'' +
                 ", produceplace='" + produceplace + '\'' +
@@ -204,8 +191,7 @@ public class Goods implements Serializable {
                 ", gimg='" + gimg + '\'' +
                 ", available=" + available +
                 ", pid=" + pid +
-                ", sid=" + sid +
-                ", totalweight=" + totalweight +
+                ", pname='" + pname + '\'' +
                 '}';
     }
 }

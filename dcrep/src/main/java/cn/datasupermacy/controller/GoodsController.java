@@ -2,13 +2,15 @@ package cn.datasupermacy.controller;
 
 import cn.datasupermacy.Exceptions.DcrepException;
 import cn.datasupermacy.entity.Goods;
+import cn.datasupermacy.entity.Provider;
 import cn.datasupermacy.service.GoodsService;
+import cn.datasupermacy.service.ProviderService;
+import cn.datasupermacy.util.GoodsUtil;
 import cn.datasupermacy.util.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
@@ -16,6 +18,8 @@ import java.util.List;
 public class GoodsController {
     @Autowired
     private GoodsService goodsService;
+    @Autowired
+    private ProviderService providerService;
 
     @GetMapping("/goodsList")
     public ResponseEntity findAllGoods(){
@@ -30,8 +34,14 @@ public class GoodsController {
     public ResponseEntity findGoodsById(Integer gid){
         if (gid!=null){
             Goods goods = goodsService.findGoodsById(gid);
-            if (goods!=null){
-                return new ResponseEntity(1,goods);
+            String pname = providerService.findProviderById(goods.getPid()).getProvidername();
+            GoodsUtil goodsUtil = new GoodsUtil(goods.getGid(),goods.getGname(),
+                    goods.getProduceplace(),goods.getSize(),goods.getGpackage(),
+                    goods.getProductcode(),goods.getPromitcode(),goods.getDescription(),
+                    goods.getPrice(),goods.getNumber(),goods.getDangernum(),goods.getGimg(),
+                    goods.getAvailable(),goods.getPid(),pname);
+            if (goodsUtil!=null){
+                return new ResponseEntity(1,goodsUtil);
             }
             return new ResponseEntity(-1,"无任何信息！！！");
         }
@@ -98,4 +108,42 @@ public class GoodsController {
         }
         throw new DcrepException(0,"gid/goods为空！！！");
     }
+
+    @PostMapping("/goodsListByKey")
+    public ResponseEntity findGoodsByKey(String key){
+        if (key!=null && !key.isEmpty()){
+            List<Goods> list = goodsService.findGoodsByKey(key);
+            if (list!=null){
+                return new ResponseEntity(1,list);
+            }
+            return new ResponseEntity(-1,"无任何信息！！！");
+        }
+        throw new DcrepException(0,"key为空！！！");
+    }
+
+    @PostMapping("/goodsListByPid")
+    public ResponseEntity findGoodsByPid(Integer pid){
+        if (pid!=null && pid>0){
+            List<Goods> list = goodsService.findGoodsByPid(pid);
+            if (list!=null){
+                return new ResponseEntity(1,list);
+            }
+            return new ResponseEntity(-1,"无任何信息！！！");
+        }
+        throw new DcrepException(0,"pid为空！！！");
+    }
+
+    @GetMapping("/providerName")
+    public ResponseEntity findAllProviderName(){
+        List<Provider> list = providerService.findAllProvider();
+        if (list!=null){
+            HashMap<Object, Object> map2 = providerService.findAllProviderName(list);
+            if (map2!=null){
+                return new ResponseEntity(1,map2);
+            }
+            return new ResponseEntity(-1,"无任何信息！！！");
+        }
+        throw new DcrepException(0,"list为空！！！");
+    }
+
 }

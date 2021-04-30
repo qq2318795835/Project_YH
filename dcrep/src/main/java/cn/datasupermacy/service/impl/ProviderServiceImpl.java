@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProviderServiceImpl implements ProviderService {
@@ -90,5 +93,46 @@ public class ProviderServiceImpl implements ProviderService {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    @Override
+    public List<Provider> findProviderByKey(String key) throws DcrepException {
+        try {
+            return providerMapper.findProviderByKey(key);
+        } catch (DcrepException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public HashMap<Object, Object> findAllProviderName(List<Provider> list) {
+        try {
+            HashMap<Integer,String> map = new HashMap<>();
+            HashMap<Object, Object> map2 = new HashMap<>();
+            for (Provider provider : list) {
+                map.put(provider.getPid(),provider.getProvidername());
+            }
+            for (Iterator iterator = map.entrySet().iterator(); iterator.hasNext();){
+                Map.Entry entry = (Map.Entry) iterator.next();
+                if (map2.containsValue(entry.getValue())) {
+                    continue;
+                } else {
+                    map2.put(entry.getKey(), entry.getValue());
+                }
+            }
+            return map2;
+        } catch (DcrepException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
     }
 }

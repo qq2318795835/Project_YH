@@ -61,7 +61,32 @@
 <!--               enableDeleteByExample="false" enableSelectByExample="false"-->
 <!--               selectByExampleQueryId="false">-->
 <!--        </table>-->
-        <table tableName="bus_goods" domainObjectName="Goods"
+<!--        <table tableName="bus_goods" domainObjectName="Goods"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="bus_inport" domainObjectName="Inports"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="bus_storehouse" domainObjectName="StoreHouse"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--            <table tableName="bus_outport" domainObjectName="Outports"-->
+<!--                   enableCountByExample="false" enableUpdateByExample="false"-->
+<!--                   enableDeleteByExample="false" enableSelectByExample="false"-->
+<!--                   selectByExampleQueryId="false">-->
+<!--            </table>-->
+<!--        <table tableName="bus_sales" domainObjectName="Sales"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false">-->
+<!--        </table>-->
+        <table tableName="bus_salesback" domainObjectName="SalesBack"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

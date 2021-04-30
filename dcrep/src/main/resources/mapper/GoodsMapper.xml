@@ -17,11 +17,13 @@
       <arg column="gimg" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="available" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="pid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="sid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="totalweight" javaType="java.lang.Double" jdbcType="DOUBLE" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
     gid, gname, produceplace, size, gpackage, productcode, promitcode, description, price, 
-    number, dangernum, gimg, available, pid
+    number, dangernum, gimg, available, pid, sid, totalweight
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -38,12 +40,14 @@
       size, gpackage, productcode, 
       promitcode, description, price, 
       number, dangernum, gimg, 
-      available, pid)
+      available, pid, sid, 
+      totalweight)
     values (#{gid,jdbcType=INTEGER}, #{gname,jdbcType=VARCHAR}, #{produceplace,jdbcType=VARCHAR}, 
       #{size,jdbcType=VARCHAR}, #{gpackage,jdbcType=VARCHAR}, #{productcode,jdbcType=VARCHAR}, 
       #{promitcode,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
       #{number,jdbcType=INTEGER}, #{dangernum,jdbcType=INTEGER}, #{gimg,jdbcType=VARCHAR}, 
-      #{available,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER})
+      #{available,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, 
+      #{totalweight,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="cn.datasupermacy.entity.Goods">
     insert into bus_goods
@@ -90,6 +94,12 @@
       <if test="pid != null">
         pid,
       </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="totalweight != null">
+        totalweight,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="gid != null">
@@ -133,6 +143,12 @@
       </if>
       <if test="pid != null">
         #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="totalweight != null">
+        #{totalweight,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -178,6 +194,12 @@
       <if test="goods.pid != null">
         pid = #{goods.pid,jdbcType=INTEGER},
       </if>
+      <if test="goods.sid != null">
+        sid = #{goods.sid,jdbcType=INTEGER},
+      </if>
+      <if test="goods.totalweight != null">
+        totalweight = #{goods.totalweight,jdbcType=DOUBLE},
+      </if>
     </set>
     where gid = #{gid,jdbcType=INTEGER}
   </update>
@@ -195,7 +217,9 @@
       dangernum = #{goods.dangernum,jdbcType=INTEGER},
       gimg = #{goods.gimg,jdbcType=VARCHAR},
       available = #{goods.available,jdbcType=INTEGER},
-      pid = #{goods.pid,jdbcType=INTEGER}
+      pid = #{goods.pid,jdbcType=INTEGER},
+      sid = #{goods.sid,jdbcType=INTEGER},
+      totalweight = #{goods.totalweight,jdbcType=DOUBLE}
     where gid = #{gid,jdbcType=INTEGER}
   </update>
 
@@ -219,5 +243,12 @@
         select * from bus_goods where gpackage = #{gpackage,jdbcType=VARCHAR};
   </select>
 
+  <select id="findGoodsByKey" parameterType="String" resultType="cn.datasupermacy.entity.Goods">
+        select * from bus_goods where gname like CONCAT('%',#{key},'%')
+        or produceplace like CONCAT('%',#{key},'%');
+  </select>
 
+  <select id="findDangerNumGoods" parameterType="int" resultType="cn.datasupermacy.util.DangerNumGoods">
+    SELECT gid,gname,number,dangernum FROM bus_goods where number &lt;= 10 ORDER BY number ;
+  </select>
 </mapper>

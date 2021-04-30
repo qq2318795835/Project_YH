@@ -14,6 +14,13 @@ spring:
     password: yanghui.123456
     database: 0
     timeout: 3000
+  #返回时间
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
+  mvc:
+    format:
+      date: yyyy-MM-dd
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

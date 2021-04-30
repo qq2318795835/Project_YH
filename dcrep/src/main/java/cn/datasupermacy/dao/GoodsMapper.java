@@ -1,6 +1,7 @@
 package cn.datasupermacy.dao;
 
 import cn.datasupermacy.entity.Goods;
+import cn.datasupermacy.util.DangerNumGoods;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -16,11 +17,15 @@ public interface GoodsMapper {
 
     Goods selectByPrimaryKey(Integer gid);
 
-    int updateByPrimaryKeySelective(Integer gid,@Param("goods") Goods goods);
-
-    int updateByPrimaryKey(Goods goods);
+    int updateByPrimaryKeySelective(Integer gid,@Param("goods")Goods goods);
 
     List<Goods> findAllGoods();
 
     Goods findGoodsByName(String gname);
+
+    List<Goods> findGoodsByKey(String key);
+
+    List<Goods> findGoodsByPid(Integer pid);
+
+    List<DangerNumGoods> findDangerNumGoods();
 }

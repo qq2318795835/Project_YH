@@ -23,4 +23,6 @@ public interface ProviderMapper {
     List<Provider> findAllProvider();
 
     Provider findProviderByName(String providername);
+
+    List<Provider> findProviderByKey(String key);
 }

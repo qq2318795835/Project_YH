@@ -1,32 +1,24 @@
 package cn.datasupermacy.service.impl;
 
 import cn.datasupermacy.Exceptions.DcrepException;
-import cn.datasupermacy.dao.GoodsMapper;
-import cn.datasupermacy.entity.Goods;
-import cn.datasupermacy.service.GoodsService;
-import cn.datasupermacy.util.DangerNumGoods;
+import cn.datasupermacy.dao.InportsMapper;
+import cn.datasupermacy.entity.Inports;
+import cn.datasupermacy.service.InportsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @Service
-public class GoodsServiceImpl implements GoodsService {
+public class InportsServiceImpl implements InportsService {
     @Autowired
-    private GoodsMapper goodsMapper;
-    @Override
-    public List<Goods> findAllGoods() {
-        return goodsMapper.findAllGoods();
-    }
+    InportsMapper inportsMapper;
 
     @Override
-    public Goods findGoodsById(Integer gid) throws DcrepException {
+    public int delInports(Integer iid) throws DcrepException {
         try {
-            return goodsMapper.selectByPrimaryKey(gid);
+            return inportsMapper.deleteByPrimaryKey(iid);
         } catch (DcrepException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -34,13 +26,28 @@ public class GoodsServiceImpl implements GoodsService {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-        return null;
+        return 0;
+    }
+
+    @Transactional
+    @Override
+    public int addInports(Inports inports) throws DcrepException {
+        try {
+            return inportsMapper.insertSelective(inports);
+        } catch (DcrepException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     @Override
-    public Goods findGoodsByName(String gname) throws DcrepException {
+    public Inports findInportsById(Integer iid) throws DcrepException {
         try {
-            return goodsMapper.findGoodsByName(gname);
+            return inportsMapper.selectByPrimaryKey(iid);
         } catch (DcrepException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -53,9 +60,9 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Transactional
     @Override
-    public int addGoods(Goods goods) throws DcrepException {
+    public int updateInports(Integer iid,Inports inports) throws DcrepException {
         try {
-            return goodsMapper.insertSelective(goods);
+            return inportsMapper.updateByPrimaryKeySelective(iid,inports);
         } catch (DcrepException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -67,37 +74,14 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public int updatGoods(Integer gid, Goods goods) throws DcrepException {
-        try {
-            return goodsMapper.updateByPrimaryKeySelective(gid,goods);
-        } catch (DcrepException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-        return 0;
+    public List<Inports> findAllInports() {
+        return inportsMapper.findAllInports();
     }
 
     @Override
-    public int delGoods(Integer gid) throws DcrepException {
+    public List<Inports> findInportsByGid(Integer gid) throws DcrepException {
         try {
-            return goodsMapper.deleteByPrimaryKey(gid);
-        } catch (DcrepException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    @Override
-    public List<Goods> findGoodsByKey(String key) throws DcrepException{
-        try {
-            return goodsMapper.findGoodsByKey(key);
+            return inportsMapper.findInportsByGid(gid);
         } catch (DcrepException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -109,9 +93,9 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<Goods> findGoodsByPid(Integer pid) {
+    public List<Inports> findInportsByPid(Integer pid) throws DcrepException {
         try {
-            return goodsMapper.findGoodsByPid(pid);
+            return inportsMapper.findInportsByPid(pid);
         } catch (DcrepException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -123,22 +107,9 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public HashMap<Object, Object> findAllGoodsName(List<Goods> list) {
+    public List<Inports> findInportsBySid(Integer sid) throws DcrepException {
         try {
-            HashMap<Integer, String> map = new HashMap<>();
-            HashMap<Object, Object> map2 = new HashMap<>();
-            for (Goods goods : list) {
-                map.put(goods.getGid(), goods.getGname());
-            }
-            for (Iterator iterator = map.entrySet().iterator(); iterator.hasNext(); ) {
-                Map.Entry entry = (Map.Entry) iterator.next();
-                if (map2.containsValue(entry.getValue())) {
-                    continue;
-                } else {
-                    map2.put(entry.getKey(), entry.getValue());
-                }
-            }
-            return map2;
+            return inportsMapper.findInportsBySid(sid);
         } catch (DcrepException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -150,7 +121,30 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<DangerNumGoods> findDangerNumGoods() {
-        return goodsMapper.findDangerNumGoods();
+    public List<Inports> findInportsByOname(String operateperson) throws DcrepException {
+        try {
+            return inportsMapper.findInportsByOname(operateperson);
+        } catch (DcrepException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Inports> findInportsByDate(Date inporttime) throws DcrepException {
+        try {
+            return inportsMapper.findInportsByDate(inporttime);
+        } catch (DcrepException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
     }
 }

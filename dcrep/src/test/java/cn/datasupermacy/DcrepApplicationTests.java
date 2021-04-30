@@ -2,23 +2,18 @@ package cn.datasupermacy;
 
 import cn.datasupermacy.controller.DeptController;
 import cn.datasupermacy.controller.UserController;
-import cn.datasupermacy.dao.DeptMapper;
-import cn.datasupermacy.dao.GoodsMapper;
-import cn.datasupermacy.entity.Dept;
-import cn.datasupermacy.entity.User;
+import cn.datasupermacy.dao.*;
+import cn.datasupermacy.entity.*;
+import cn.datasupermacy.service.GoodsService;
 import cn.datasupermacy.service.impl.DeptServiceImpl;
 import cn.datasupermacy.service.impl.UserServiceImpl;
-import cn.datasupermacy.util.JwtUtil;
-import cn.datasupermacy.util.TreeUtil;
-import cn.datasupermacy.util.UserUtil;
+import cn.datasupermacy.util.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 
@@ -44,6 +39,18 @@ class DcrepApplicationTests {
 
     @Autowired
     private GoodsMapper goodsMapper;
+
+    @Autowired
+    private CustomerMapper customerMapper;
+
+    @Autowired
+    private GoodsService goodsService;
+
+    @Autowired
+    private SalesMapper salesMapper;
+
+    @Autowired
+    private SalesBackMapper salesBackMapper;
 
     @Test
     void contextLoads() {
@@ -210,7 +217,104 @@ class DcrepApplicationTests {
 
     @Test
     public void getGoodsById(){
-        System.out.println(goodsMapper.selectByPrimaryKey(2));
+        System.out.println(goodsMapper.selectByPrimaryKey(1));
     }
+
+    @Test
+    public void findCustomerByKey(){
+        List<Customer> list = customerMapper.findCustomerByKey("张大明");
+        for (int i = 0; i <list.size() ; i++) {
+            System.out.println(list.get(i));
+        }
+        System.out.println(list.size());
+    }
+
+    @Test
+    public void findGoodsByPid(){
+        List<Goods> list = goodsService.findGoodsByPid(8);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).getGname());
+        }
+    }
+
+    @Test
+    public void findDangerNumGoods(){
+        List<DangerNumGoods> list = goodsMapper.findDangerNumGoods();
+        for (DangerNumGoods dangerNumGoods : list) {
+            System.out.println(dangerNumGoods);
+        }
+    }
+
+    @Test
+    public void findSalesByDateSelect(){
+        List<Sales> list = salesMapper.findSalesByDateSelect("2020");
+        for (Sales sales : list) {
+            System.out.println(sales);
+        }
+    }
+
+    @Test
+    public void AnalysisSales(){
+        List<SalesAnalysisUtil> list = salesMapper.AnalysisSales("2020");
+        List<Object> AnalysisResult= new ArrayList<>();
+        for (SalesAnalysisUtil analysisUtil : list) {
+            List<Object> list1 = new ArrayList<>();
+            List<Integer> list2 = new ArrayList<>();
+            list1.add(analysisUtil.getGid());
+            list1.add(analysisUtil.getGname());
+            list2.add(analysisUtil.getJan());
+            list2.add(analysisUtil.getFeb());
+            list2.add(analysisUtil.getMar());
+            list2.add(analysisUtil.getApr());
+            list2.add(analysisUtil.getMay());
+            list2.add(analysisUtil.getJune());
+            list2.add(analysisUtil.getJuly());
+            list2.add(analysisUtil.getAug());
+            list2.add(analysisUtil.getSept());
+            list2.add(analysisUtil.getOct());
+            list2.add(analysisUtil.getNov());
+            list2.add(analysisUtil.getDece());
+            list1.add(list2);
+            list1.add(analysisUtil.getNumberTotal());
+            AnalysisResult.add(list1);
+        }
+        for (Object o : AnalysisResult) {
+            System.out.println(o);
+        }
+    }
+    @Test
+    public void findSalesByDateSelect1(){
+        List<SalesAnalysisUtil> list = salesMapper.AnalysisSales("2020");
+        for (SalesAnalysisUtil sales : list) {
+            System.out.println(sales);
+        }
+    }
+
+    @Test
+    public void AnalysisSalesBack(){
+        List<SalesAnalysisBackUtil> list = salesBackMapper.AnalysisSalesBack("2020");
+        for (SalesAnalysisBackUtil salesAnalysisBackUtil : list) {
+            System.out.println(salesAnalysisBackUtil);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

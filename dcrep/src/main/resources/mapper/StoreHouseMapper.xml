@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datasupermacy.dao.StoreHouseMapper">
+  <resultMap id="BaseResultMap" type="cn.datasupermacy.entity.StoreHouse">
+    <constructor>
+      <idArg column="sid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="sname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="address" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="total" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="margin" javaType="java.lang.Double" jdbcType="DOUBLE" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    sid, sname, address, total, margin
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bus_storehouse
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bus_storehouse
+    where sid = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.datasupermacy.entity.StoreHouse">
+    insert into bus_storehouse (sid, sname, address, 
+      total, margin)
+    values (#{sid,jdbcType=INTEGER}, #{sname,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{total,jdbcType=DOUBLE}, #{margin,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.datasupermacy.entity.StoreHouse">
+    insert into bus_storehouse
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="sname != null">
+        sname,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="total != null">
+        total,
+      </if>
+      <if test="margin != null">
+        margin,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="sname != null">
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null">
+        #{total,jdbcType=DOUBLE},
+      </if>
+      <if test="margin != null">
+        #{margin,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.datasupermacy.entity.StoreHouse">
+    update bus_storehouse
+    <set>
+      <if test="storeHouse.sname != null">
+        sname = #{storeHouse.sname,jdbcType=VARCHAR},
+      </if>
+      <if test="storeHouse.address != null">
+        address = #{storeHouse.address,jdbcType=VARCHAR},
+      </if>
+      <if test="storeHouse.total != null">
+        total = #{storeHouse.total,jdbcType=DOUBLE},
+      </if>
+      <if test="storeHouse.margin != null">
+        margin = #{storeHouse.margin,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.datasupermacy.entity.StoreHouse">
+    update bus_storehouse
+    set sname = #{storeHouse.sname,jdbcType=VARCHAR},
+      address = #{storeHouse.address,jdbcType=VARCHAR},
+      total = #{storeHouse.total,jdbcType=DOUBLE},
+      margin = #{storeHouse.margin,jdbcType=DOUBLE}
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+
+  <select id="findAllHouse" parameterType="int" resultType="cn.datasupermacy.entity.StoreHouse">
+        select * from bus_storehouse ;
+  </select>
+</mapper>

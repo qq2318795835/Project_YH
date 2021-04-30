@@ -143,11 +143,16 @@
   </update>
 
   <select id="findAllCustomer" parameterType="int" resultType="cn.datasupermacy.entity.Customer">
-        select * from bus_customer ;
+        select * from bus_customer order by ctelephone;
   </select>
 
   <select id="findCustomerByName" parameterType="String" resultType="cn.datasupermacy.entity.Customer">
         select * from bus_customer where customernname = #{customernname,jdbcType=VARCHAR};
+  </select>
+
+  <select id="findCustomerByKey" parameterType="String" resultType="cn.datasupermacy.entity.Customer">
+        select * from bus_customer where customernname like CONCAT('%',#{key},'%')
+        or caddress like CONCAT('%',#{key},'%') or contact like CONCAT('%',#{key},'%');
   </select>
 
 

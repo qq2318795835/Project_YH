@@ -122,6 +122,8 @@ public class UserController extends BaseController {
     public ResponseEntity getAllUserUtils() {
         List<UserUtil> userUtils = new ArrayList<>();
         List<User> users = userService.findAllUser();
+        if (users != null) {
+
         for (User user : users) {
             UserUtil userUtil = new UserUtil();
             userUtil.setUid(user.getUid());
@@ -133,11 +135,14 @@ public class UserController extends BaseController {
             userUtil.setUmgr(userService.findById(user.getUmgr()).getUname());
             userUtils.add(userUtil);
         }
-        if (userUtils!=null){
-            return new ResponseEntity(1,userUtils);
+        if (userUtils != null) {
+            return new ResponseEntity(1, userUtils);
         }
-        return new ResponseEntity(-1,"无任何信息!");
+        return new ResponseEntity(-1, "无任何信息!");
+        }
+        throw new UserException(0,"users为空！！！");
     }
+
 
     @GetMapping("/getUserUtilById")
     public ResponseEntity getUserUtilById(Integer uid) {

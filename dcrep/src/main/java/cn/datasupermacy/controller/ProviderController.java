@@ -99,4 +99,16 @@ public class ProviderController {
         }
         throw new DcrepException(0,"pid/provider为空！");
     }
+
+    @PostMapping("/providerListByKey")
+    public ResponseEntity findProviderByKey(String key){
+        if (key!=null && !key.isEmpty()){
+            List<Provider> list = providerService.findProviderByKey(key);
+            if (list!=null){
+                return new ResponseEntity(1,list);
+            }
+            return new ResponseEntity(-1,"无任何信息！！！");
+        }
+        throw new DcrepException(0,"key为空！！！");
+    }
 }

@@ -23,4 +23,6 @@ public interface CustomerMapper {
     List<Customer> findAllCustomer();
 
     Customer findCustomerByName(String customernname);
+
+    List<Customer> findCustomerByKey(String key);
 }

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datasupermacy.dao.SalesBackMapper">
+  <resultMap id="BaseResultMap" type="cn.datasupermacy.entity.SalesBack">
+    <constructor>
+      <idArg column="sbid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="customerid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="paytype" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="salesbacktime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="salebackprice" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="operateperson" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="goodsid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="sid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ssid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="totalweight" javaType="java.lang.Double" jdbcType="DOUBLE" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    sbid, customerid, paytype, salesbacktime, salebackprice, operateperson, number, remark, 
+    goodsid, sid, ssid, totalweight
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bus_salesback
+    where sbid = #{sbid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bus_salesback
+    where sbid = #{sbid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.datasupermacy.entity.SalesBack">
+    insert into bus_salesback (sbid, customerid, paytype, 
+      salesbacktime, salebackprice, operateperson, 
+      number, remark, goodsid, 
+      sid,ssid, totalweight)
+    values (#{sbid,jdbcType=INTEGER}, #{customerid,jdbcType=INTEGER}, #{paytype,jdbcType=VARCHAR}, 
+      #{salesbacktime,jdbcType=TIMESTAMP}, #{salebackprice,jdbcType=DOUBLE}, #{operateperson,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{goodsid,jdbcType=INTEGER}, 
+      #{sid,jdbcType=INTEGER},#{ssid,jdbcType=INTEGER}, #{totalweight,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.datasupermacy.entity.SalesBack">
+    insert into bus_salesback
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sbid != null">
+        sbid,
+      </if>
+      <if test="customerid != null">
+        customerid,
+      </if>
+      <if test="paytype != null">
+        paytype,
+      </if>
+      <if test="salesbacktime != null">
+        salesbacktime,
+      </if>
+      <if test="salebackprice != null">
+        salebackprice,
+      </if>
+      <if test="operateperson != null">
+        operateperson,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="goodsid != null">
+        goodsid,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="ssid != null">
+        ssid,
+      </if>
+      <if test="totalweight != null">
+        totalweight,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sbid != null">
+        #{sbid,jdbcType=INTEGER},
+      </if>
+      <if test="customerid != null">
+        #{customerid,jdbcType=INTEGER},
+      </if>
+      <if test="paytype != null">
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="salesbacktime != null">
+        #{salesbacktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="salebackprice != null">
+        #{salebackprice,jdbcType=DOUBLE},
+      </if>
+      <if test="operateperson != null">
+        #{operateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="ssid != null">
+        #{ssid,jdbcType=INTEGER},
+      </if>
+      <if test="totalweight != null">
+        #{totalweight,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.datasupermacy.entity.SalesBack">
+    update bus_salesback
+    <set>
+      <if test="salesBack.customerid != null">
+        customerid = #{salesBack.customerid,jdbcType=INTEGER},
+      </if>
+      <if test="salesBack.paytype != null">
+        paytype = #{salesBack.paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="salesBack.salesbacktime != null">
+        salesbacktime = #{salesBack.salesbacktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="salesBack.salebackprice != null">
+        salebackprice = #{salesBack.salebackprice,jdbcType=DOUBLE},
+      </if>
+      <if test="salesBack.operateperson != null">
+        operateperson = #{salesBack.operateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="salesBack.number != null">
+        number = #{salesBack.number,jdbcType=INTEGER},
+      </if>
+      <if test="salesBack.remark != null">
+        remark = #{salesBack.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="salesBack.goodsid != null">
+        goodsid = #{salesBack.goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="salesBack.sid != null">
+        sid = #{salesBack.sid,jdbcType=INTEGER},
+      </if>
+      <if test="salesBack.ssid != null">
+        ssid = #{salesBack.ssid,jdbcType=INTEGER},
+      </if>
+      <if test="salesBack.totalweight != null">
+        totalweight = #{salesBack.totalweight,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where sbid = #{sbid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.datasupermacy.entity.SalesBack">
+    update bus_salesback
+    set customerid = #{salesBack.customerid,jdbcType=INTEGER},
+      paytype = #{salesBack.paytype,jdbcType=VARCHAR},
+      salesbacktime = #{salesBack.salesbacktime,jdbcType=TIMESTAMP},
+      salebackprice = #{salesBack.salebackprice,jdbcType=DOUBLE},
+      operateperson = #{salesBack.operateperson,jdbcType=VARCHAR},
+      number = #{salesBack.number,jdbcType=INTEGER},
+      remark = #{salesBack.remark,jdbcType=VARCHAR},
+      goodsid = #{salesBack.goodsid,jdbcType=INTEGER},
+      sid = #{salesBack.sid,jdbcType=INTEGER},
+      ssid = #{salesBack.ssid,jdbcType=INTEGER},
+      totalweight = #{salesBack.totalweight,jdbcType=DOUBLE}
+    where sbid = #{sbid,jdbcType=INTEGER}
+  </update>
+
+  <select id="findAllSalesBack" parameterType="int" resultType="cn.datasupermacy.entity.SalesBack">
+        select * from bus_salesback ORDER BY salesbacktime DESC;
+  </select>
+
+  <select id="findSalesBackByGid" parameterType="int" resultType="cn.datasupermacy.entity.SalesBack">
+        select * from bus_salesback where goodsid = #{gid,jdbcType=INTEGER} ORDER BY salesbacktime DESC;
+  </select>
+
+  <select id="findSalesBackByCid" parameterType="int" resultType="cn.datasupermacy.entity.SalesBack">
+        select * from bus_salesback where customerid = #{cid,jdbcType=INTEGER} ORDER BY salesbacktime DESC;
+  </select>
+
+  <select id="findSalesBackBySid" parameterType="int" resultType="cn.datasupermacy.entity.SalesBack">
+        select * from bus_salesback where sid = #{sid,jdbcType=INTEGER} ORDER BY salesbacktime DESC;
+  </select>
+
+  <select id="findSalesBackByDate" parameterType="Date" resultType="cn.datasupermacy.entity.SalesBack">
+        select * from bus_salesback where salesbacktime = #{salesbacktime,jdbcType=TIMESTAMP};
+  </select>
+
+  <select id="AnalysisSalesBack" parameterType="String" resultType="cn.datasupermacy.util.SalesAnalysisBackUtil">
+        SELECT b.sbid,b.customerid ,b.salebackprice,b.sid,b.ssid,b.goodsid gid,g.gname,
+          sum(case MONTH(salesbacktime) when '1' then b.number else null end) as 'jan' ,
+          sum(case MONTH(salesbacktime) when '2' then b.number else null end) as 'feb' ,
+          sum(case MONTH(salesbacktime) when '3' then b.number else null end) as 'mar' ,
+          sum(case MONTH(salesbacktime) when '4' then b.number else null end) as 'apr' ,
+          sum(case MONTH(salesbacktime) when '5' then b.number else null end) as 'may' ,
+          sum(case MONTH(salesbacktime) when '6' then b.number else null end) as 'june' ,
+          sum(case MONTH(salesbacktime) when '7' then b.number else null end) as 'july' ,
+          sum(case MONTH(salesbacktime) when '8' then b.number else null end) as 'aug' ,
+          sum(case MONTH(salesbacktime) when '9' then b.number else null end) as 'sept' ,
+          sum(case MONTH(salesbacktime) when '10' then b.number else null end) as 'oct' ,
+          sum(case MONTH(salesbacktime) when '11' then b.number else null end) as 'nov' ,
+          sum(case MONTH(salesbacktime) when '12' then b.number else null end) as 'dece',
+          sum(b.number) AS numberTotal
+      FROM bus_salesback b LEFT JOIN bus_goods g ON b.goodsid = g.gid
+      WHERE date_format(salesbacktime,'%Y') = #{salesbacktime,jdbcType=TIMESTAMP} GROUP BY goodsid;
+  </select>
+</mapper>

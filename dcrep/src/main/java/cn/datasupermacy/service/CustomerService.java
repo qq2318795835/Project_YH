@@ -3,6 +3,7 @@ package cn.datasupermacy.service;
 import cn.datasupermacy.Exceptions.CustomerException;
 import cn.datasupermacy.entity.Customer;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface CustomerService {
@@ -17,4 +18,8 @@ public interface CustomerService {
     int delCustomer(Integer cid)throws CustomerException;
 
     int updateCustomer(Integer cid ,Customer customer)throws CustomerException;
+
+    List<Customer> findCustomerByKey (String key);
+
+    HashMap<Object, Object> findAllCustomerName(List<Customer> list);
 }

@@ -100,4 +100,16 @@ public class CustomerController {
         }
         throw new CustomerException(0,"cid/customer为空!");
     }
+
+    @PostMapping("/customerListByKey")
+    public ResponseEntity findCustomerByKey(String key){
+        if (key!=null && !key.isEmpty()){
+            List<Customer> list = customerService.findCustomerByKey(key);
+            if (list!=null){
+                return new ResponseEntity(1,list);
+            }
+            return new ResponseEntity(-1,"无任何信息！！！");
+        }
+        throw new CustomerException(0,"key为空！！！");
+    }
 }

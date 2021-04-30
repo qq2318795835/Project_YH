@@ -3,6 +3,7 @@ package cn.datasupermacy.service;
 import cn.datasupermacy.Exceptions.DcrepException;
 import cn.datasupermacy.entity.Provider;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface ProviderService {
@@ -17,4 +18,8 @@ public interface ProviderService {
     int delProvider(Integer pid);
 
     int updateProvider(Integer pid,Provider provider)throws DcrepException;
+
+    List<Provider> findProviderByKey(String key)throws DcrepException;
+
+    HashMap<Object, Object>findAllProviderName(List<Provider> list)throws DcrepException;
 }

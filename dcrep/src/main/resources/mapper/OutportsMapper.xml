@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.datasupermacy.dao.OutportsMapper">
+  <resultMap id="BaseResultMap" type="cn.datasupermacy.entity.Outports">
+    <constructor>
+      <idArg column="oid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="providerid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="paytype" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="outputtime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="operateperson" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="outportprice" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="goodsid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="sid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="totalweight" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="iid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    oid, providerid, paytype, outputtime, operateperson, outportprice, number, remark, 
+    goodsid, sid, totalweight, iid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bus_outport
+    where oid = #{oid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bus_outport
+    where oid = #{oid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.datasupermacy.entity.Outports">
+    insert into bus_outport (oid, providerid, paytype, 
+      outputtime, operateperson, outportprice, 
+      number, remark, goodsid, 
+      sid, totalweight, iid
+      )
+    values (#{oid,jdbcType=INTEGER}, #{providerid,jdbcType=INTEGER}, #{paytype,jdbcType=VARCHAR}, 
+      #{outputtime,jdbcType=TIMESTAMP}, #{operateperson,jdbcType=VARCHAR}, #{outportprice,jdbcType=DOUBLE}, 
+      #{number,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{goodsid,jdbcType=INTEGER}, 
+      #{sid,jdbcType=INTEGER}, #{totalweight,jdbcType=DOUBLE}, #{iid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.datasupermacy.entity.Outports">
+    insert into bus_outport
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        oid,
+      </if>
+      <if test="providerid != null">
+        providerid,
+      </if>
+      <if test="paytype != null">
+        paytype,
+      </if>
+      <if test="outputtime != null">
+        outputtime,
+      </if>
+      <if test="operateperson != null">
+        operateperson,
+      </if>
+      <if test="outportprice != null">
+        outportprice,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="goodsid != null">
+        goodsid,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="totalweight != null">
+        totalweight,
+      </if>
+      <if test="iid != null">
+        iid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="providerid != null">
+        #{providerid,jdbcType=INTEGER},
+      </if>
+      <if test="paytype != null">
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="outputtime != null">
+        #{outputtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateperson != null">
+        #{operateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="outportprice != null">
+        #{outportprice,jdbcType=DOUBLE},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="totalweight != null">
+        #{totalweight,jdbcType=DOUBLE},
+      </if>
+      <if test="iid != null">
+        #{iid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.datasupermacy.entity.Outports">
+    update bus_outport
+    <set>
+      <if test="outports.providerid != null">
+        providerid = #{outports.providerid,jdbcType=INTEGER},
+      </if>
+      <if test="outports.paytype != null">
+        paytype = #{outports.paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="outports.outputtime != null">
+        outputtime = #{outports.outputtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outports.operateperson != null">
+        operateperson = #{outports.operateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="outports.outportprice != null">
+        outportprice = #{outports.outportprice,jdbcType=DOUBLE},
+      </if>
+      <if test="outports.number != null">
+        number = #{outports.number,jdbcType=INTEGER},
+      </if>
+      <if test="outports.remark != null">
+        remark = #{outports.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="outports.goodsid != null">
+        goodsid = #{outports.goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="outports.sid != null">
+        sid = #{outports.sid,jdbcType=INTEGER},
+      </if>
+      <if test="outports.totalweight != null">
+        totalweight = #{outports.totalweight,jdbcType=DOUBLE},
+      </if>
+      <if test="outports.iid != null">
+        iid = #{outports.iid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.datasupermacy.entity.Outports">
+    update bus_outport
+    set providerid = #{outports.providerid,jdbcType=INTEGER},
+      paytype = #{outports.paytype,jdbcType=VARCHAR},
+      outputtime = #{outports.outputtime,jdbcType=TIMESTAMP},
+      operateperson = #{outports.operateperson,jdbcType=VARCHAR},
+      outportprice = #{outports.outportprice,jdbcType=DOUBLE},
+      number = #{outports.number,jdbcType=INTEGER},
+      remark = #{outports.remark,jdbcType=VARCHAR},
+      goodsid = #{outports.goodsid,jdbcType=INTEGER},
+      sid = #{outports.sid,jdbcType=INTEGER},
+      totalweight = #{outports.totalweight,jdbcType=DOUBLE},
+      iid = #{outports.iid,jdbcType=INTEGER}
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+
+  <select id="findAllOutports" parameterType="int" resultType="cn.datasupermacy.entity.Outports">
+        select * from bus_outport ORDER BY outputtime DESC;
+  </select>
+
+  <select id="findOutportsByGid" parameterType="int" resultType="cn.datasupermacy.entity.Outports">
+        select * from bus_outport where goodsid = #{gid,jdbcType=INTEGER} ORDER BY outputtime DESC;
+  </select>
+
+  <select id="findOutportsByPid" parameterType="int" resultType="cn.datasupermacy.entity.Outports">
+        select * from bus_outport where providerid = #{pid,jdbcType=INTEGER} ORDER BY outputtime DESC;
+  </select>
+
+  <select id="findOutportsBySid" parameterType="int" resultType="cn.datasupermacy.entity.Outports">
+        select * from bus_outport where sid = #{sid,jdbcType=INTEGER} ORDER BY outputtime DESC;
+  </select>
+
+  <select id="findOutportsByDate" parameterType="Date" resultType="cn.datasupermacy.entity.Outports">
+        select * from bus_outport where outputtime = #{outputtime,jdbcType=TIMESTAMP};
+  </select>
+</mapper>
