@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:8081")
+//@CrossOrigin(origins = "http://81.70.152.49:8081")
 @RestController
 @RequestMapping("/Dept")
 public class DeptController {

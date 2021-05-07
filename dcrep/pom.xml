@@ -17,6 +17,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <maven.test.skip>true</maven.test.skip>
     </properties>
 
     <dependencies>
@@ -132,6 +133,18 @@
                         <version>5.1.39</version>
                     </dependency>
                 </dependencies>
+
+            </plugin>
+
+
+            <!--                设置运行主类-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+
+                <configuration>
+                    <mainClass>cn.datasupermacy.DcrepApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
 
@@ -139,10 +152,24 @@
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.properties</include>
                     <include>**/*.xml</include>
                 </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
             </resource>
         </resources>
+
+
     </build>
 
 </project>

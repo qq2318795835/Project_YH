@@ -19,6 +19,7 @@ import java.sql.Timestamp;
 import java.util.*;
 
 @CrossOrigin(origins = "http://localhost:8081")
+//@CrossOrigin(origins = "http://81.70.152.49:8081")
 @RestController
 @RequestMapping("/Inports")
 public class InportsController {
