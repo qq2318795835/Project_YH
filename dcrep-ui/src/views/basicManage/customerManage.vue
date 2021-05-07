@@ -513,12 +513,13 @@
 </script>
 
 <style>
-  .el-card__body {
-    padding: 0px;
-  }
+
 </style>
 
 <style scoped>
+  >>>.el-card__body {
+    padding: 0px;
+  }
   .body{
     margin-left: 214px;
     margin-right: -8px;
@@ -570,6 +571,7 @@
     margin-left: 10px;
     /*width: 60px;*/
   }
+
   .footer{
     height: 55.5px;
     text-align: center;

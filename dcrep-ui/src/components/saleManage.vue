@@ -18,9 +18,7 @@
 </script>
 
 <style>
-  .el-card__body {
-    padding: 0px;
-  }
+
 </style>
 
 <style scoped>

@@ -259,20 +259,20 @@
 </script>
 
 <style>
-  .el-menu-vertical-demo:not(.el-menu--collapse) {
-  }
-
-  .el-scrollbar__thumb{
-       background-color: #7e848a;
-     }
-  .el-scrollbar__wrap {
-    overflow-x: hidden;
-  }
 
 </style>
 <style scoped>
+  >>>.el-card__body {
+    padding: 0px;
+  }
   .el-scrollbar{
     height: 495px;
+  }
+  >>>.el-scrollbar__thumb{
+    background-color: #7e848a;
+  }
+  >>>.el-scrollbar__wrap {
+    overflow-x: hidden;
   }
 .main {
  margin: -8px -8px -8px -8px;

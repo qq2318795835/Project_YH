@@ -18,12 +18,13 @@
 </script>
 
 <style>
-  .el-card__body {
-    padding: 0px;
-  }
+
 </style>
 
 <style scoped>
+  >>>.el-card__body {
+    padding: 0px;
+  }
   .body{
     margin-left: 214px;
     margin-right: -8px;

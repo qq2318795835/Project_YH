@@ -94,7 +94,7 @@
                   <template slot-scope="scope">
                     <el-button class="operate-button-1" type="danger" size="small" @click="delMessage(scope.row.did)">删除</el-button>
 
-                    <el-button class="operate-button-1" type="info" size="small" @click="updateDept_getDept(scope.row.did)" >修改</el-button>
+                    <el-button class="operate-button-2" type="info" size="small" @click="updateDept_getDept(scope.row.did)" >修改</el-button>
                       <!--修改部门模态框-->
                       <el-dialog title="修改部门" :visible.sync="dialogFormVisible2">
                         <el-form key="updateDept" :model="updateDeptform" ref="updateDeptform"
@@ -495,5 +495,11 @@
   .operate-button-1{
     margin-left: 35px;
     width: 80px;
+  }
+  .operate-button-2{
+    margin-left: 35px;
+    width: 80px;
+    /*background-color: #ff6600;*/
+    /*border-color: #ff6600;*/
   }
 </style>

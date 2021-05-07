@@ -248,7 +248,6 @@
     <!--          </div>-->
             </el-scrollbar>
           </el-card>
-
       </div>
       <div class="footer">
         <div class="footer-title">CopyRight-DataSupermacy-Y @2021</div>
@@ -374,6 +373,60 @@
                     console.log(error)
                 });
             },
+            //商品nameList
+            getGoodsName(){
+                this.$axios({
+                    method: "get",
+                    url: '/Inports/goodsName',
+                }).then((response) => {
+                    this.status = response.data.code
+                    if (this.status === 1) {
+                        // console.log(response.data)
+                        this.goodsName = response.data.data
+                        console.log(this.goodsName)
+                    } else {
+                        return this.$message.error('查询商品name失败')
+                    }
+                }).catch(function (error) {
+                    console.log(error)
+                });
+            },
+            //供应商nameList
+            getProviderName(){
+                this.$axios({
+                    method: "get",
+                    url: '/Goods/providerName',
+                }).then((response) => {
+                    this.status = response.data.code
+                    if (this.status === 1) {
+                        // console.log(response.data)
+                        this.providerName = response.data.data
+                        // console.log(this.providerName)
+                        // console.log(this.getByValue(this.providerName,'娃哈哈集团'))
+                    } else {
+                        return this.$message.error('查询供应商name失败')
+                    }
+                }).catch(function (error) {
+                    console.log(error)
+                });
+            },
+            getHouseName(){
+                this.$axios({
+                    method: "get",
+                    url: '/Inports/houseName',
+                }).then((response) => {
+                    this.status = response.data.code
+                    if (this.status === 1) {
+                        // console.log(response.data)
+                        this.houseName = response.data.data
+                        // console.log(this.houseName)
+                    } else {
+                        return this.$message.error('查询仓库name失败')
+                    }
+                }).catch(function (error) {
+                    console.log(error)
+                });
+            },
             getHouse(){
                 this.$axios({
                     method: "get",
@@ -435,7 +488,7 @@
                             dangerouslyUseHTMLString: true,
                             message: h('p', null, [
                                 h('a',
-                                    ['添加进货成功，是否退货管理查看？',
+                                    ['添加进货成功，是否进货管理查看？',
                                         h('el-button', {
                                             style: {
                                                 marginTop: '5px'
@@ -626,8 +679,6 @@
                     },
                     series: []
                 };
-                // salesbacktime = salesbacktime || this.lastYear
-                // console.log(salesbacktime)
                 if (salesbacktime!=null){
                   await this.$axios({
                       method: "post",
@@ -675,6 +726,9 @@
         },
         mounted() {
             this.getDangerNumGoods()
+            this.getProviderName()
+            this.getGoodsName()
+            this.getHouseName()
             this.getHouse()
             this.getCurrentDate()
             this.getrecentYears()
@@ -684,31 +738,35 @@
     }
 </script>
 <style>
-  .el-card__body {
-    padding: 0px;
-  }
-  /*讨厌的element样式使得修改商品供应商选择器margin-bottom为-17px,样式覆盖，多加17*/
-  .el-select-dropdown__list{
-    margin-bottom: 17px;
-  }
+
 
 </style>
 <style scoped>
-.scrollbar-body{
-  height: 585px;
-}
+  >>>.el-card__body {
+    padding: 0px;
+  }
+  /*讨厌的element样式使得修改商品供应商选择器margin-bottom为-17px,样式覆盖，多加17*/
+  >>>.el-select-dropdown__list{
+    margin-bottom: 17px;
+  }
+  >>>.el-scrollbar__wrap {
+    overflow-x: hidden;
+  }
+  .scrollbar-body{
+    height: 585px;
+  }
   .el-scrollbar__thumb{
     background-color: #7e848a;
   }
 
-.body{
-  margin-left: 214px;
-  margin-right: -8px;
-  margin-top: -181px;
-}
-.card-body{
-  border: none;
-}
+  .body{
+    margin-left: 214px;
+    margin-right: -8px;
+    margin-top: -181px;
+  }
+  .card-body{
+    border: none;
+  }
   .button{
     margin-top: 30px;
     margin-bottom: 30px;

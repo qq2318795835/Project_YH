@@ -111,7 +111,7 @@
                 <template slot-scope="scope">
                   <el-button class="operate-button-1" type="danger" size="small" @click="delMessage(scope.row.uid)">删除</el-button>
 
-                  <el-button class="operate-button-1" type="info" size="small" @click="updateUser_getUser(scope.row.uid)" >修改</el-button>
+                  <el-button class="operate-button-2" type="info" size="small" @click="updateUser_getUser(scope.row.uid)" >修改</el-button>
                     <!--修改用户模态框-->
                     <el-dialog title="修改用户" :visible.sync="dialogFormVisible2" class="abow_dialog">
                       <el-form key="updateUser" :model="updateUserform" ref="updateUserform"
@@ -495,5 +495,10 @@
     margin-left: 25px;
     width: 60px;
   }
-
+  .operate-button-2{
+    margin-left: 25px;
+    width: 60px;
+    /*background-color: #ff6600;*/
+    /*border-color: #ff6600;*/
+  }
 </style>

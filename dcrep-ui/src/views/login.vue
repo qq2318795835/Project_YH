@@ -121,6 +121,9 @@
   }
 </style>
 <style scoped>
+  >>>.el-card__body {
+    padding: 20px;
+  }
   .login-body{
     margin:12% auto;
     width: 400px;

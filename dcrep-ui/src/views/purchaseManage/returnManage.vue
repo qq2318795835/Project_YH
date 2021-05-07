@@ -396,17 +396,18 @@
 </script>
 
 <style>
-  .el-card__body {
-    padding: 0px;
-  }
-  /*讨厌的element样式使得修改商品供应商选择器margin-bottom为-17px,样式覆盖，多加17*/
-  .el-select-dropdown__list{
-    margin-bottom: 17px;
-  }
+
 
 </style>
 
 <style scoped>
+  >>>.el-card__body {
+    padding: 0px;
+  }
+  /*讨厌的element样式使得修改商品供应商选择器margin-bottom为-17px,样式覆盖，多加17*/
+  >>>.el-select-dropdown__list{
+    margin-bottom: 17px;
+  }
   /*商品供应商选择器太长，可能与侧边栏有关，样式形变*/
   .el-scrollbar {
     height: auto;
