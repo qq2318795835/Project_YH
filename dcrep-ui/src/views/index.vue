@@ -481,6 +481,8 @@
                     // console.log(response.data)
                     if (response.data.code === 1) {
                         this.dialogFormVisible = false
+                        this.getDangerNumGoods()
+                        this.getHouse()
                         // return this.$message.success('添加成功')
                         const h = this.$createElement;
                         this.$notify({

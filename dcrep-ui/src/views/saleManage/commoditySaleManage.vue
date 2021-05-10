@@ -83,7 +83,7 @@
           </div>
           <!--客户选择查询-->
           <div class="customerSelect">
-            <el-select class="form-item-input" filterable v-model="cname"  placeholder="请选择供应商">
+            <el-select class="form-item-input" filterable v-model="cname"  placeholder="请选择客户">
               <el-option @click.native="getSalesList" value="">所有客户</el-option>
               <el-option style="height: auto" v-for="(value, key) in customerName" :key="key" :value="value" @click.native="getSalesByCid(key)">
 
