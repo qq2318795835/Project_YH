@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-@CrossOrigin(origins = "http://localhost:8081")
+//@CrossOrigin(origins = "http://localhost:8081")
 //@CrossOrigin(origins = "http://81.70.152.49:8081")
 @RestController
 @RequestMapping("/User")
