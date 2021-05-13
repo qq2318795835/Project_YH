@@ -198,7 +198,7 @@
                     if (this.status === 1) {
                         this.OutportList = response.data.data
                         this.tableData = response.data.data
-                        console.log(this.tableData)
+                        // console.log(this.tableData)
                         this.pagination.total = this.tableData.length
                     } else {
                         return this.$message.error('查询进货列表失败')

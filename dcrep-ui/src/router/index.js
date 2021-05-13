@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import login from '../views/login';
 import index from '../views/index';
+import userDetail from "../views/userDetail";
 import notFound from "../components/system/notFound";
 import systemManage from "../components/systemManage";
 import basicManage from "../components/basicManage"
@@ -33,6 +34,7 @@ const router = new Router({
     {path: '/navigation', component: navigation,},
     {path: '/breadcrumb', component: breadcrumb,},
     {path: '/index', component: index, name:index, meta: { title: '后台首页' }},
+    {path: '/userDetail', component: userDetail, name:userDetail, meta: { title: '个人中心' }},
 
     {path: '/systemManage', component: systemManage, name:systemManage,meta: { title: '系统管理'},
       children:[

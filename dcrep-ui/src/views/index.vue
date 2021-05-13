@@ -383,7 +383,7 @@
                     if (this.status === 1) {
                         // console.log(response.data)
                         this.goodsName = response.data.data
-                        console.log(this.goodsName)
+                        // console.log(this.goodsName)
                     } else {
                         return this.$message.error('查询商品name失败')
                     }

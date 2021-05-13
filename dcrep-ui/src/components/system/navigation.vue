@@ -21,7 +21,7 @@
           <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>个人中心</el-dropdown-item>
+            <el-dropdown-item @click.native="toUserDetail" >个人中心</el-dropdown-item>
             <el-dropdown-item @click.native="loginout(1)">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -240,6 +240,9 @@
                 var seconds=date.getSeconds()<10 ? "0"+date.getSeconds() : date.getSeconds();
                 // 拼接
                 return year+"-"+month+"-"+day+""+"-"+""+hours+":"+minutes+":"+seconds;
+            },
+            toUserDetail(){
+                this.$router.push('/userDetail')
             }
         },
         mounted() {
